@@ -5,6 +5,7 @@ export const serviceSlugs = [
   "cybersecurity-helper",
   "brand-ready-systems",
   "marketing-branding-seo",
+  "e-commerce-virtual-assistant",
 ] as const;
 
 export type ServiceSlug = (typeof serviceSlugs)[number];
@@ -58,262 +59,375 @@ export type CombinedEngagement = {
 };
 
 export const services = [
-  {
-    slug: "web-design-development",
-    title: "Web design and development",
-    shortTitle: "Web",
-    bookingLabel: "Web design and development",
+  // {
+  //   slug: "web-design-development",
+  //   title: "Web design and development",
+  //   shortTitle: "Web",
+  //   bookingLabel: "Web design and development",
+  //   summary:
+  //     "Responsive marketing sites, product websites, web apps, dashboards, and CMS-backed pages built around one clear user action.",
+  //   homeDescription:
+  //     "Marketing pages, product sites, dashboards, and responsive front-end builds shaped around one clear action.",
+  //   meta: {
+  //     title: "Web Design and Development |EcomPros Services",
+  //     description:
+  //       "Ecom ProDesk web design and development services for startup websites, web apps, dashboards, CMS content systems, SEO foundations, analytics, DevOps, and launch support.",
+  //   },
+  //   audienceFit: [
+  //     "A startup needs a credible launch site before outreach or fundraising.",
+  //     "A product already exists, but the public website does not explain it clearly.",
+  //     "A team needs a responsive web app, dashboard, or CMS-backed content surface.",
+  //     "The current site is hard to maintain, slow, or inconsistent with the product.",
+  //   ],
+  //   capabilities: [
+  //     {
+  //       title: "UI/UX design",
+  //       body:
+  //         "Map the primary visitor path, wireframe the core screens, and shape the interface so people understand the offer without needing a sales deck first.",
+  //     },
+  //     {
+  //       title: "Product discovery",
+  //       body:
+  //         "Turn unclear scope into a practical site map, feature list, content model, and release order that a small team can actually ship.",
+  //     },
+  //     {
+  //       title: "Product development",
+  //       body:
+  //         "Build interactive web surfaces, account flows, lead forms, dashboards, calculators, profile pages, and launch-ready product experiences.",
+  //     },
+  //     {
+  //       title: "Application architecture",
+  //       body:
+  //         "Define route structure, data boundaries, state ownership, API touchpoints, authentication needs, and reusable component patterns before implementation sprawls.",
+  //     },
+  //     {
+  //       title: "Frontend engineering",
+  //       body:
+  //         "Implement accessible, responsive interfaces with production-grade React and Next.js patterns, not throwaway landing page markup.",
+  //     },
+  //     {
+  //       title: "CMS and content architecture",
+  //       body:
+  //         "Create editable content structures for teams that need to publish pages, articles, resources, case studies, or campaign content after launch.",
+  //     },
+  //     {
+  //       title: "Performance and SEO foundations",
+  //       body:
+  //         "Set semantic structure, metadata, responsive media, crawlable content, and performance habits early so the site is not repaired after launch.",
+  //     },
+  //     {
+  //       title: "Analytics and conversion paths",
+  //       body:
+  //         "Prepare events, form handoff, booking paths, and content hierarchy so the site can tell the team what visitors are doing.",
+  //     },
+  //     {
+  //       title: "DevOps and deployment",
+  //       body:
+  //         "Set up preview and production environments, environment variables, deployment notes, domain readiness, and a practical launch checklist.",
+  //     },
+  //   ],
+  //   deliverables: [
+  //     "Discovery notes, site map, and priority user journeys",
+  //     "Responsive UI direction or coded prototype for the key pages",
+  //     "Production Next.js website or web app implementation",
+  //     "Reusable component patterns for future pages",
+  //     "CMS, admin, or content editing workflow when needed",
+  //     "Metadata, analytics, performance, and launch-readiness pass",
+  //     "Deployment notes, environment guide, and handoff checklist",
+  //   ],
+  //   process: [
+  //     {
+  //       title: "Frame the visitor path",
+  //       body:
+  //         "Clarify the audience, offer, content hierarchy, conversion action, and launch deadline.",
+  //     },
+  //     {
+  //       title: "Design the surface",
+  //       body:
+  //         "Create the core page structure, responsive states, visual system, and reusable interface patterns.",
+  //     },
+  //     {
+  //       title: "Build the application",
+  //       body:
+  //         "Implement the route structure, components, data hooks, forms, media, and integrations.",
+  //     },
+  //     {
+  //       title: "Harden for launch",
+  //       body:
+  //         "Review accessibility, responsiveness, metadata, speed, deployment, and edge states before public release.",
+  //     },
+  //   ],
+  //   stack: [
+  //     "Next.js",
+  //     "React",
+  //     "TypeScript",
+  //     "Responsive CSS",
+  //     "CMS workflows",
+  //     "Analytics",
+  //     "Vercel or managed hosting",
+  //     "Domain and environment setup",
+  //   ],
+  //   handoff:
+  //     "The handoff includes the codebase, route map, reusable components, content editing notes, deployment instructions, and a launch checklist the founder can share with the team.",
+  //   relatedPortfolioSlugs: ["tapcon", "solarstock", "oneplatemeal"],
+  //   faqs: [
+  //     {
+  //       question: "CanEcomPros handle both design and development?",
+  //       answer:
+  //         "Yes. The work is planned as one product surface, so the visual direction, responsive behavior, content structure, and implementation stay connected.",
+  //     },
+  //     {
+  //       question: "Can the website include app-like features?",
+  //       answer:
+  //         "Yes. Lead portals, dashboards, authenticated areas, calculators, profiles, and account flows can be scoped into the web build.",
+  //     },
+  //     {
+  //       question: "Can we start with a launch site and expand later?",
+  //       answer:
+  //         "Yes. The first release can focus on the pages and flows needed now, with the route and component structure left ready for the next product layer.",
+  //     },
+  //   ],
+  // },
+  // {
+  //   slug: "software-product-development",
+  //   title: "Software design and development",
+  //   shortTitle: "Software",
+  //   bookingLabel: "Software design and development",
+  //   summary:
+  //     "Product UX, application logic, admin dashboards, backend workflows, integrations, and database-backed systems for early-stage teams.",
+  //   homeDescription:
+  //     "Interface logic, architecture-facing UX, and implementation support for products that need to feel coherent early.",
+  //   meta: {
+  //     title: "Software Design and Development |EcomPros Services",
+  //     description:
+  //       "Software design and development services for product UX, application architecture, backend systems, dashboards, APIs, databases, authentication, permissions, and mobile app planning.",
+  //   },
+  //   audienceFit: [
+  //     "A founder has product requirements but needs the software shaped into a buildable system.",
+  //     "A team needs an MVP, internal platform, dashboard, or operational workflow.",
+  //     "A product has grown through quick fixes and needs clearer architecture.",
+  //     "Mobile app planning is needed alongside the web product and backend.",
+  //   ],
+  //   capabilities: [
+  //     {
+  //       title: "Product strategy and scope",
+  //       body:
+  //         "Convert the idea, workflow, or existing manual process into release stages, screens, data models, and technical priorities.",
+  //     },
+  //     {
+  //       title: "Application architecture",
+  //       body:
+  //         "Plan the front-end, back-end, database, role model, integration boundaries, and deployment model before the product becomes expensive to change.",
+  //     },
+  //     {
+  //       title: "UX flows and product interfaces",
+  //       body:
+  //         "Design signup, onboarding, dashboards, admin tools, settings, billing, status, and operational views around the jobs users need to finish.",
+  //     },
+  //     {
+  //       title: "Frontend and backend implementation",
+  //       body:
+  //         "Build the application interface, API routes, server-side logic, persistence layer, and integration glue required for a working product.",
+  //     },
+  //     {
+  //       title: "API and integration design",
+  //       body:
+  //         "Connect payment providers, CRMs, email systems, storage, third-party APIs, notification services, and internal data sources.",
+  //     },
+  //     {
+  //       title: "Database modeling",
+  //       body:
+  //         "Define schemas, relationships, indexes, migrations, seed data, and admin workflows so the product can hold real operational data.",
+  //     },
+  //     {
+  //       title: "Authentication and permissions",
+  //       body:
+  //         "Set up login, roles, access control, account states, password flows, and secure defaults for user-facing and admin areas.",
+  //     },
+  //     {
+  //       title: "Mobile app design and development",
+  //       body:
+  //         "Plan and design native-feeling mobile flows, then build with a practical cross-platform stack when the product needs an iOS or Android layer.",
+  //     },
+  //     {
+  //       title: "QA and release support",
+  //       body:
+  //         "Review happy paths, failure states, responsive behavior, permissions, browser support, and release notes before launch.",
+  //     },
+  //   ],
+  //   deliverables: [
+  //     "Product scope, workflow map, and release plan",
+  //     "Application architecture notes and data model",
+  //     "Responsive product UI and admin interface",
+  //     "Backend workflows, API routes, and integrations",
+  //     "Authentication, roles, and permission behavior",
+  //     "Mobile app plan or implementation when included",
+  //     "QA notes, deployment instructions, and release checklist",
+  //   ],
+  //   process: [
+  //     {
+  //       title: "Map the product",
+  //       body:
+  //         "Turn the business process into user roles, data states, screens, and integration points.",
+  //     },
+  //     {
+  //       title: "Design the operating model",
+  //       body:
+  //         "Specify the core workflows, permissions, dashboard needs, database shape, and release order.",
+  //     },
+  //     {
+  //       title: "Build the system",
+  //       body:
+  //         "Implement the application, backend logic, database, admin tools, and third-party connections.",
+  //     },
+  //     {
+  //       title: "Release with checks",
+  //       body:
+  //         "Test the critical paths, document the setup, and prepare the team to operate the product after launch.",
+  //     },
+  //   ],
+  //   stack: [
+  //     "Next.js",
+  //     "React",
+  //     "TypeScript",
+  //     "Node.js",
+  //     "PostgreSQL or MySQL",
+  //     "Prisma or Drizzle",
+  //     "Authentication",
+  //     "API integrations",
+  //     "React Native or Expo planning",
+  //   ],
+  //   handoff:
+  //     "The handoff documents how the application is structured, where the data lives, how roles behave, what services are connected, and what needs attention in the next release.",
+  //   relatedPortfolioSlugs: ["tapcon", "solarstock", "oneplatemeal"],
+  //   faqs: [
+  //     {
+  //       question: "CanEcomPros build an MVP from a rough idea?",
+  //       answer:
+  //         "Yes, as long as the first release can be framed around a clear workflow, user role, or operational job.",
+  //     },
+  //     {
+  //       question: "Can mobile app work be included?",
+  //       answer:
+  //         "Yes. Mobile app design and development can be included under the software scope when the product needs iOS or Android access.",
+  //     },
+  //     {
+  //       question: "Can existing software be improved instead of rebuilt?",
+  //       answer:
+  //         "Yes. The work can focus on a specific module, admin flow, frontend rebuild, database cleanup, or architecture pass.",
+  //     },
+  //   ],
+  // },
+    {
+    slug: "e-commerce-virtual-assistant",
+    title: "E-commerce Virtual Assistant",
+    shortTitle: "E-commerce VA",
+    bookingLabel: "E-commerce Virtual Assistant",
     summary:
-      "Responsive marketing sites, product websites, web apps, dashboards, and CMS-backed pages built around one clear user action.",
+      "Reliable day-to-day ecommerce support for catalog updates, marketplace operations, order follow-up, customer care, and store administration.",
     homeDescription:
-      "Marketing pages, product sites, dashboards, and responsive front-end builds shaped around one clear action.",
+      "Practical ecommerce support that keeps products, orders, customers, and daily store operations moving.",
     meta: {
-      title: "Web Design and Development |EcomPros Services",
+      title: "E-commerce Virtual Assistant |EcomPros Services",
       description:
-        "Ecom ProDesk web design and development services for startup websites, web apps, dashboards, CMS content systems, SEO foundations, analytics, DevOps, and launch support.",
+        "E-commerce virtual assistant services for product uploads, catalog management, marketplace support, order tracking, customer care, and store operations.",
     },
     audienceFit: [
-      "A startup needs a credible launch site before outreach or fundraising.",
-      "A product already exists, but the public website does not explain it clearly.",
-      "A team needs a responsive web app, dashboard, or CMS-backed content surface.",
-      "The current site is hard to maintain, slow, or inconsistent with the product.",
+      "A store owner needs consistent help maintaining products and orders.",
+      "A growing catalog needs clean listings, images, variants, and inventory updates.",
+      "A marketplace team needs support with customer messages, order status, and daily admin.",
+      "A founder wants to hand off repeatable ecommerce tasks without losing visibility.",
     ],
     capabilities: [
       {
-        title: "UI/UX design",
+        title: "Product listing management",
         body:
-          "Map the primary visitor path, wireframe the core screens, and shape the interface so people understand the offer without needing a sales deck first.",
+          "Create, update, and organize product titles, descriptions, images, variants, pricing, and collection placement.",
       },
       {
-        title: "Product discovery",
+        title: "Catalog and inventory support",
         body:
-          "Turn unclear scope into a practical site map, feature list, content model, and release order that a small team can actually ship.",
+          "Keep product information, stock notes, spreadsheets, and category structures accurate across the store.",
       },
       {
-        title: "Product development",
+        title: "Marketplace operations",
         body:
-          "Build interactive web surfaces, account flows, lead forms, dashboards, calculators, profile pages, and launch-ready product experiences.",
+          "Support listings, marketplace updates, order checks, message handling, and routine platform administration.",
       },
       {
-        title: "Application architecture",
+        title: "Order and fulfillment follow-up",
         body:
-          "Define route structure, data boundaries, state ownership, API touchpoints, authentication needs, and reusable component patterns before implementation sprawls.",
+          "Track order status, flag exceptions, coordinate follow-up, and keep customers informed when something changes.",
       },
       {
-        title: "Frontend engineering",
+        title: "Customer care",
         body:
-          "Implement accessible, responsive interfaces with production-grade React and Next.js patterns, not throwaway landing page markup.",
+          "Handle repeatable customer questions with a clear tone, useful context, and escalation notes for the store owner.",
       },
       {
-        title: "CMS and content architecture",
+        title: "Store administration",
         body:
-          "Create editable content structures for teams that need to publish pages, articles, resources, case studies, or campaign content after launch.",
-      },
-      {
-        title: "Performance and SEO foundations",
-        body:
-          "Set semantic structure, metadata, responsive media, crawlable content, and performance habits early so the site is not repaired after launch.",
-      },
-      {
-        title: "Analytics and conversion paths",
-        body:
-          "Prepare events, form handoff, booking paths, and content hierarchy so the site can tell the team what visitors are doing.",
-      },
-      {
-        title: "DevOps and deployment",
-        body:
-          "Set up preview and production environments, environment variables, deployment notes, domain readiness, and a practical launch checklist.",
+          "Support promotions, collections, content updates, reporting routines, and the small operational tasks that pile up.",
       },
     ],
     deliverables: [
-      "Discovery notes, site map, and priority user journeys",
-      "Responsive UI direction or coded prototype for the key pages",
-      "Production Next.js website or web app implementation",
-      "Reusable component patterns for future pages",
-      "CMS, admin, or content editing workflow when needed",
-      "Metadata, analytics, performance, and launch-readiness pass",
-      "Deployment notes, environment guide, and handoff checklist",
+      "Product uploads and listing cleanup",
+      "Catalog, collection, and inventory updates",
+      "Marketplace and store administration",
+      "Order tracking and fulfillment follow-up",
+      "Customer support responses and escalation notes",
+      "Weekly task summary and operational handoff",
     ],
     process: [
       {
-        title: "Frame the visitor path",
+        title: "Map the routine",
         body:
-          "Clarify the audience, offer, content hierarchy, conversion action, and launch deadline.",
+          "Identify the recurring store tasks, platforms, access needs, priorities, and escalation rules.",
       },
       {
-        title: "Design the surface",
+        title: "Set the workflow",
         body:
-          "Create the core page structure, responsive states, visual system, and reusable interface patterns.",
+          "Create a practical task list, update rhythm, communication channel, and quality checklist.",
       },
       {
-        title: "Build the application",
+        title: "Run the operations",
         body:
-          "Implement the route structure, components, data hooks, forms, media, and integrations.",
+          "Handle the agreed catalog, marketplace, order, customer, and admin work with consistent documentation.",
       },
       {
-        title: "Harden for launch",
+        title: "Report and improve",
         body:
-          "Review accessibility, responsiveness, metadata, speed, deployment, and edge states before public release.",
+          "Share completed work, blockers, customer patterns, and the next operational priorities.",
       },
     ],
     stack: [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Responsive CSS",
-      "CMS workflows",
-      "Analytics",
-      "Vercel or managed hosting",
-      "Domain and environment setup",
+      "Shopify",
+      "Amazon and marketplaces",
+      "Product catalogs",
+      "Order management",
+      "Customer support",
+      "Spreadsheets",
+      "Inventory updates",
+      "Weekly reporting",
     ],
     handoff:
-      "The handoff includes the codebase, route map, reusable components, content editing notes, deployment instructions, and a launch checklist the founder can share with the team.",
-    relatedPortfolioSlugs: ["tapcon", "solarstock", "oneplatemeal"],
+      "The handoff includes the task workflow, store notes, escalation rules, update checklist, and a clear record of the work completed each week.",
+    relatedPortfolioSlugs: [],
     faqs: [
       {
-        question: "CanEcomPros handle both design and development?",
+        question: "Can the virtual assistant work inside our existing store?",
         answer:
-          "Yes. The work is planned as one product surface, so the visual direction, responsive behavior, content structure, and implementation stay connected.",
+          "Yes. The workflow can be shaped around the ecommerce platform, marketplaces, tools, and approval process your team already uses.",
       },
       {
-        question: "Can the website include app-like features?",
+        question: "Can support start with product uploads only?",
         answer:
-          "Yes. Lead portals, dashboards, authenticated areas, calculators, profiles, and account flows can be scoped into the web build.",
+          "Yes. The engagement can begin with one repeatable task and expand into orders, customer care, marketplace work, or store administration.",
       },
       {
-        question: "Can we start with a launch site and expand later?",
+        question: "How will we know what was completed?",
         answer:
-          "Yes. The first release can focus on the pages and flows needed now, with the route and component structure left ready for the next product layer.",
-      },
-    ],
-  },
-  {
-    slug: "software-product-development",
-    title: "Software design and development",
-    shortTitle: "Software",
-    bookingLabel: "Software design and development",
-    summary:
-      "Product UX, application logic, admin dashboards, backend workflows, integrations, and database-backed systems for early-stage teams.",
-    homeDescription:
-      "Interface logic, architecture-facing UX, and implementation support for products that need to feel coherent early.",
-    meta: {
-      title: "Software Design and Development |EcomPros Services",
-      description:
-        "Software design and development services for product UX, application architecture, backend systems, dashboards, APIs, databases, authentication, permissions, and mobile app planning.",
-    },
-    audienceFit: [
-      "A founder has product requirements but needs the software shaped into a buildable system.",
-      "A team needs an MVP, internal platform, dashboard, or operational workflow.",
-      "A product has grown through quick fixes and needs clearer architecture.",
-      "Mobile app planning is needed alongside the web product and backend.",
-    ],
-    capabilities: [
-      {
-        title: "Product strategy and scope",
-        body:
-          "Convert the idea, workflow, or existing manual process into release stages, screens, data models, and technical priorities.",
-      },
-      {
-        title: "Application architecture",
-        body:
-          "Plan the front-end, back-end, database, role model, integration boundaries, and deployment model before the product becomes expensive to change.",
-      },
-      {
-        title: "UX flows and product interfaces",
-        body:
-          "Design signup, onboarding, dashboards, admin tools, settings, billing, status, and operational views around the jobs users need to finish.",
-      },
-      {
-        title: "Frontend and backend implementation",
-        body:
-          "Build the application interface, API routes, server-side logic, persistence layer, and integration glue required for a working product.",
-      },
-      {
-        title: "API and integration design",
-        body:
-          "Connect payment providers, CRMs, email systems, storage, third-party APIs, notification services, and internal data sources.",
-      },
-      {
-        title: "Database modeling",
-        body:
-          "Define schemas, relationships, indexes, migrations, seed data, and admin workflows so the product can hold real operational data.",
-      },
-      {
-        title: "Authentication and permissions",
-        body:
-          "Set up login, roles, access control, account states, password flows, and secure defaults for user-facing and admin areas.",
-      },
-      {
-        title: "Mobile app design and development",
-        body:
-          "Plan and design native-feeling mobile flows, then build with a practical cross-platform stack when the product needs an iOS or Android layer.",
-      },
-      {
-        title: "QA and release support",
-        body:
-          "Review happy paths, failure states, responsive behavior, permissions, browser support, and release notes before launch.",
-      },
-    ],
-    deliverables: [
-      "Product scope, workflow map, and release plan",
-      "Application architecture notes and data model",
-      "Responsive product UI and admin interface",
-      "Backend workflows, API routes, and integrations",
-      "Authentication, roles, and permission behavior",
-      "Mobile app plan or implementation when included",
-      "QA notes, deployment instructions, and release checklist",
-    ],
-    process: [
-      {
-        title: "Map the product",
-        body:
-          "Turn the business process into user roles, data states, screens, and integration points.",
-      },
-      {
-        title: "Design the operating model",
-        body:
-          "Specify the core workflows, permissions, dashboard needs, database shape, and release order.",
-      },
-      {
-        title: "Build the system",
-        body:
-          "Implement the application, backend logic, database, admin tools, and third-party connections.",
-      },
-      {
-        title: "Release with checks",
-        body:
-          "Test the critical paths, document the setup, and prepare the team to operate the product after launch.",
-      },
-    ],
-    stack: [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Node.js",
-      "PostgreSQL or MySQL",
-      "Prisma or Drizzle",
-      "Authentication",
-      "API integrations",
-      "React Native or Expo planning",
-    ],
-    handoff:
-      "The handoff documents how the application is structured, where the data lives, how roles behave, what services are connected, and what needs attention in the next release.",
-    relatedPortfolioSlugs: ["tapcon", "solarstock", "oneplatemeal"],
-    faqs: [
-      {
-        question: "CanEcomPros build an MVP from a rough idea?",
-        answer:
-          "Yes, as long as the first release can be framed around a clear workflow, user role, or operational job.",
-      },
-      {
-        question: "Can mobile app work be included?",
-        answer:
-          "Yes. Mobile app design and development can be included under the software scope when the product needs iOS or Android access.",
-      },
-      {
-        question: "Can existing software be improved instead of rebuilt?",
-        answer:
-          "Yes. The work can focus on a specific module, admin flow, frontend rebuild, database cleanup, or architecture pass.",
+          "You receive a simple task summary with completed updates, open questions, exceptions, and the next priorities.",
       },
     ],
   },
@@ -823,7 +937,8 @@ export const services = [
           "Yes. Campaign direction, ad creative, social assets, landing page alignment, and reporting structure can be planned together.",
       },
     ],
-  },
+  }
+
 ] as const satisfies readonly ServiceContent[];
 
 const serviceCatalog: readonly ServiceContent[] = services;

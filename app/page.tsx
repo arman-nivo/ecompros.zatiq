@@ -32,28 +32,28 @@ type ClientLogo = {
 
 const processSteps: ProcessStep[] = [
   {
-    mark: "Frame",
-    title: "Define the surface",
+    mark: "Map",
+    title: "Understand your store",
     body:
-      "Clarify the audience, primary action, service boundaries, and proof that can honestly be shown now.",
+      "Review your ecommerce platform, product catalog, marketplaces, recurring tasks, access needs, and the work that needs attention first.",
   },
   {
-    mark: "Shape",
-    title: "Design the system",
+    mark: "Set",
+    title: "Set the daily workflow",
     body:
-      "Turn the offer into a responsive page structure, token set, interface rhythm, and image direction.",
+      "Agree on task priorities, update checklists, approval points, communication channels, and clear rules for escalating issues.",
   },
   {
-    mark: "Build",
-    title: "Implement the front end",
+    mark: "Run",
+    title: "Run the operations",
     body:
-      "Ship the Next.js surface with accessible states, local assets, and production-ready responsive behavior.",
+      "Handle product uploads, catalog updates, marketplace work, order follow-up, customer messages, and other agreed store tasks consistently.",
   },
   {
-    mark: "Extend",
-    title: "Prepare the next layer",
+    mark: "Report",
+    title: "Keep the next action visible",
     body:
-      "Leave the system ready for real case studies, booking infrastructure, product screenshots, and proof assets.",
+      "Share completed work, blockers, customer patterns, and next priorities so your team always knows what moved forward and what needs a decision.",
   },
 ];
 
@@ -324,12 +324,13 @@ export default function Home() {
                 data-cinematic-delay="1"
                 id="process-title"
               >
-                From vague ask to usable surface.
+                From store backlog to steady operations.
               </h2>
             </div>
             <p className="section__copy" data-cinematic="rise" data-cinematic-delay="2">
-              The process is designed for small teams that need momentum and
-              decisions, not a long discovery theater.
+              Our virtual assistant process is designed for ecommerce teams that
+              need reliable execution, clear communication, and fewer daily tasks
+              competing for the founder&apos;s attention.
             </p>
           </div>
 

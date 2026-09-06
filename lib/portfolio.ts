@@ -1,7 +1,7 @@
 export type PortfolioTab = {
   description?: string;
   emptyState?: string;
-  id: "website-applications" | "motion-videos" | "marketing-seo";
+  id: "virtual-assistant" | "motion-videos" | "marketing-seo";
   label: string;
 };
 
@@ -47,10 +47,10 @@ export type PortfolioProject = {
 
 export const portfolioTabs: PortfolioTab[] = [
   {
-    id: "website-applications",
-    label: "Website and Applications",
+    id: "virtual-assistant",
+    label: "Virtual Assistant",
     description:
-      "Full-stack platforms with product videos, dashboards, operations tooling, and launch-ready marketing surfaces.",
+      "Practical ecommerce support for product uploads, catalog updates, marketplace operations, order follow-up, and customer care.",
   },
   {
     id: "motion-videos",
@@ -69,141 +69,31 @@ export const portfolioTabs: PortfolioTab[] = [
 
 export const portfolioProjects: PortfolioProject[] = [
   {
-    slug: "tapcon",
-    title: "TapCon",
-    category: "website-applications",
+    slug: "ecommerce-virtual-assistant",
+    title: "E-commerce Virtual Assistant",
+    category: "virtual-assistant",
     summary:
-      "NFC digital business card platform with CMS, dashboards, profiles, QR/vCard sharing, and integrations.",
+      "Ecommerce operations support that keeps catalogs, products, orders, customers, and daily store tasks moving.",
     cover: {
-      src: "/portfolio/web/tapcon/cover.png",
-      alt: "TapCon NFC digital business card platform interface preview.",
+      src: "/services/virtual-assistant.jpeg",
+      alt: "E-commerce virtual assistant service workspace preview.",
       width: 1536,
       height: 1024,
     },
-    logo: {
-      src: "/portfolio/web/tapcon/logo.png",
-      alt: "TapCon logo",
-      width: 611,
-      height: 725,
-    },
-    media: [
-      {
-        type: "youtube",
-        id: "czrJ59n193E",
-        title: "TapCon NFC visiting card platform demo video",
-      },
-    ],
+    media: [],
     services: [
-      "Marketing website",
-      "Order flow",
-      "User dashboard",
-      "Admin dashboard",
-      "Public profiles",
+      "Product uploads",
+      "Catalog management",
+      "Marketplace operations",
+      "Order follow-up",
+      "Customer care",
     ],
-    stack: [
-      "Next.js",
-      "React",
-      "MySQL",
-      "Drizzle ORM",
-      "NextAuth",
-      "Minio",
-    ],
+    stackLabel: "Focus",
+    stack: ["Shopify", "Marketplaces", "Order management", "Customer support", "Weekly reporting"],
     description: [
-      "We built TapCon, a full-stack NFC-powered digital business card platform for professionals and businesses. The platform allows users to order smart NFC cards, create customizable public profile pages, and share contact information instantly through tap, QR code, or downloadable vCards.",
-      "We developed a responsive marketing website, pricing pages, order flow, live 3D card preview, secure login system, user dashboard, admin dashboard, order tracking, saved contacts, contact groups, and public profile pages with multiple themes. Users can manage emails, phone numbers, addresses, social links, websites, work history, profile photos, backgrounds, and downloadable contact files.",
-      "We also built backend features including MySQL database architecture, Drizzle ORM schema, NextAuth authentication, OTP-based password reset, Minio file uploads, WhatsApp notifications, Loops email integration, admin user management, card variant management, plan pricing controls, QR code generation, and SEO-ready metadata.",
-    ],
-  },
-  {
-    slug: "solarstock",
-    title: "SolarStock",
-    category: "website-applications",
-    summary:
-      "Solar e-commerce and inventory platform with catalog, cart, orders, invoices, customers, and admin operations.",
-    cover: {
-      src: "/portfolio/web/solarstock/cover.png",
-      alt: "SolarStock solar e-commerce and admin platform interface preview.",
-      width: 1536,
-      height: 1024,
-    },
-    logo: {
-      src: "/portfolio/web/solarstock/logo.png",
-      alt: "SolarStock logo",
-      width: 2204,
-      height: 434,
-    },
-    media: [
-      {
-        type: "youtube",
-        id: "2S08SZEivjM",
-        title: "SolarStock solar e-commerce platform demo video",
-      },
-    ],
-    services: [
-      "E-commerce website",
-      "Product catalog",
-      "Customer accounts",
-      "Admin dashboard",
-      "Inventory management",
-    ],
-    stack: [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Prisma",
-      "PostgreSQL",
-    ],
-    description: [
-      "We developed a full-stack solar product e-commerce and inventory management platform for SolarStock using Next.js, React, TypeScript, Prisma, and PostgreSQL. The platform includes a responsive public website, product catalog, brand and category browsing, product detail pages, customer login and signup approval, cart functionality, order placement, customer account management, and invoice generation.",
-      "We also built a complete admin dashboard where staff can manage products, categories, brands, blogs, customers, orders, users, and roles. The system includes permission-based access control, private customer-only products, stock tracking, product documents, related products, media storage support, blog publishing, and a modern responsive UI with animations and 3D solar visuals.",
-      "This project was designed for a solar and renewable energy business that needed both a professional public website and a practical back-office system for managing products, customers, and sales operations.",
-    ],
-  },
-  {
-    slug: "oneplatemeal",
-    title: "OnePlateMeal",
-    category: "website-applications",
-    summary:
-      "Donation and impact platform with payments, tracking IDs, public proof pages, and secure admin controls.",
-    cover: {
-      src: "/portfolio/web/oneplatemeal/cover.png",
-      alt: "OnePlateMeal donation and impact platform interface preview.",
-      width: 1536,
-      height: 1024,
-    },
-    logo: {
-      src: "/portfolio/web/oneplatemeal/logo.png",
-      alt: "OnePlateMeal logo",
-      width: 500,
-      height: 500,
-    },
-    media: [
-      {
-        type: "youtube",
-        id: "5A1xVuvPVvw",
-        title: "OnePlateMeal donation platform demo video",
-      },
-    ],
-    services: [
-      "Donation website",
-      "Payment reference flow",
-      "Impact reporting",
-      "Content dashboard",
-      "Role management",
-    ],
-    stack: [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Prisma",
-      "PostgreSQL",
-    ],
-    description: [
-      "We built OnePlateMeal, a responsive donation and impact platform for a charity/food support initiative. The platform helps donors contribute through local and international payment methods, submit payment references, receive tracking IDs, and check donation status after submission.",
-      "We developed a public-facing website with dedicated pages for donations, live donations, impact reports, gallery, about, team, and contact information. The donation flow supports preset and custom amounts, anonymous giving, multiple payment options, transaction reference collection, and confirmation tracking.",
-      "We also built a secure admin dashboard for managing donations, users, roles, permissions, and website content. Admins can review pending donations, approve or reject submissions, update page content, manage gallery items, edit team members, and maintain impact proof records without changing code.",
-      "The project was developed with a modern full-stack setup using Next.js, React, TypeScript, Tailwind CSS, Prisma, and PostgreSQL.",
+      "E-commerce stores often lose time to repetitive catalog, marketplace, order, and customer tasks. This service provides reliable operational support around the workflows the store already uses.",
+      "Work can include product listing updates, collection and inventory maintenance, marketplace administration, order status follow-up, customer responses, and clear escalation notes when an issue needs the owner's decision.",
+      "The engagement starts with a practical task map and reporting rhythm, then turns repeatable store work into a consistent operating routine the team can see and improve.",
     ],
   },
   {

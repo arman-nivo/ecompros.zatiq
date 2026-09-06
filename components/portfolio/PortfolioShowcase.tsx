@@ -20,7 +20,7 @@ type PortfolioShowcaseProps = {
 };
 
 export default function PortfolioShowcase({ projects, tabs }: PortfolioShowcaseProps) {
-  const [activeTabId, setActiveTabId] = useState<PortfolioTab["id"]>(tabs[0]?.id ?? "website-applications");
+  const [activeTabId, setActiveTabId] = useState<PortfolioTab["id"]>(tabs[0]?.id ?? "virtual-assistant");
   const [selectedMediaIndex, setSelectedMediaIndex] = useState(0);
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
   const dialogRef = useRef<HTMLDialogElement | null>(null);

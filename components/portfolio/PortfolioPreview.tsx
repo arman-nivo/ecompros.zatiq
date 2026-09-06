@@ -14,7 +14,7 @@ type PortfolioPreviewProps = {
 const PER_VIEW = 3;
 
 export default function PortfolioPreview({ projects, tabs }: PortfolioPreviewProps) {
-  const [activeTabId, setActiveTabId] = useState<PortfolioTab["id"]>(tabs[0]?.id ?? "website-applications");
+  const [activeTabId, setActiveTabId] = useState<PortfolioTab["id"]>(tabs[0]?.id ?? "virtual-assistant");
   const [pageIndex, setPageIndex] = useState(0);
   const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
   const [selectedMediaIndex, setSelectedMediaIndex] = useState(0);
