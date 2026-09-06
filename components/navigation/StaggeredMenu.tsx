@@ -123,7 +123,7 @@ export const StaggeredMenu = ({
   // Initialize theme after hydration to avoid hydration mismatch
   useEffect(() => {
     const savedTheme = window.localStorage.getItem("theme");
-    const theme = savedTheme ? savedTheme === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const theme = savedTheme ? savedTheme === "dark" : false;
     setIsDarkTheme(theme);
   }, []);
 
