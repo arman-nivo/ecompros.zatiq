@@ -491,7 +491,7 @@ body:has(dialog[open]) {
   color: var(--color-accent);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
-  text-align: left;
+  text-align: center;
 }
 
 .booking-scale .section__label {
@@ -1003,7 +1003,7 @@ html[data-cinematics="active"] [data-cinematic-delay="6"] {
 }
 
 .home-services-slide__media img {
-  object-fit: contain;
+  object-fit: fill;
   object-position: center;
   transition: transform 800ms var(--ease-out);
 }
@@ -1018,6 +1018,7 @@ html[data-cinematics="active"] [data-cinematic-delay="6"] {
   justify-content: space-between;
   gap: var(--space-md);
   padding-top: var(--space-md);
+  padding-bottom: 16px;
 }
 
 
@@ -1071,7 +1072,6 @@ html[data-cinematics="active"] [data-cinematic-delay="6"] {
 .pricing-hero {
   position: relative;
   overflow: clip;
-  border-block-end: var(--rule-hair) solid var(--color-rule);
   padding-block: calc(var(--space-4xl) + var(--space-xl)) var(--space-3xl);
   background:
     radial-gradient(circle at 18% 12%, color-mix(in oklch, var(--color-accent-soft) 62%, transparent), transparent 26rem),
@@ -1335,7 +1335,7 @@ html[data-cinematics="active"] [data-cinematic-delay="6"] {
 
 .section.pricing-cta {
   padding-block: clamp(var(--space-2xl), 7vw, var(--space-4xl));
-  border-block: var(--rule-hair) solid var(--color-rule);
+
 }
 
 .pricing-cta__copy {
@@ -2103,7 +2103,6 @@ html[data-cinematics="active"] [data-cinematic-delay="6"] {
 
 .client-section {
   overflow: clip;
-  border-block: var(--rule-hair) solid var(--color-rule);
   background:
     linear-gradient(180deg, color-mix(in oklch, var(--color-paper-2) 76%, transparent), transparent 78%),
     radial-gradient(circle at 12% 18%, color-mix(in oklch, var(--color-accent-soft) 56%, transparent), transparent 18rem);
@@ -2253,7 +2252,6 @@ html[data-theme="light"] .client-marquee__image {
 }
 
 .portfolio-preview {
-  border-block: var(--rule-hair) solid var(--color-rule);
   background:
     linear-gradient(180deg, color-mix(in oklch, var(--color-paper-2) 72%, transparent), transparent 68%),
     radial-gradient(circle at 86% 18%, var(--color-accent-soft), transparent 22rem);
@@ -2276,6 +2274,7 @@ html[data-theme="light"] .client-marquee__image {
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: var(--space-md);
+  padding: 20px 5px;
 }
 
 .portfolio-preview__slider:not([data-paginated]) {
@@ -4052,7 +4051,6 @@ html[data-theme="light"] .client-marquee__image {
 .site-footer {
   position: relative;
   overflow: hidden;
-  border-block-start: var(--rule-hair) solid var(--color-rule);
   background: var(--color-paper);
   --torch-x: 50%;
   --torch-y: 10%;
@@ -4326,7 +4324,7 @@ html[data-theme="light"] .client-marquee__image {
 @media (min-width: 60rem) {
   .section {
     padding-block: var(--space-5xl);
-    padding-bottom: 0px;
+    padding-bottom:30px;
   }
 
   .capability-list {
@@ -4657,6 +4655,7 @@ html[data-theme="light"] .client-marquee__image {
   .home-services-slider__controls {
     align-items: flex-start;
     flex-direction: column-reverse;
+    padding-bottom: 16px;
   }
 
   
@@ -4920,6 +4919,7 @@ html[data-theme="light"] .client-marquee__image {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 16px;
   }
 
   .home-services-slider__arrows {

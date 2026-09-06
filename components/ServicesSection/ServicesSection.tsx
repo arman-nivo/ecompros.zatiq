@@ -323,7 +323,7 @@ export default function ServicesSection() {
             </nav>
           </div>
 
-          <div ref={rightPanelRef} className="bg-[var(--color-paper)] px-5 py-8 md:px-8 md:py-10 lg:px-10 lg:py-12">
+          <div ref={rightPanelRef} className=" px-5 py-8 md:px-8 md:py-10 lg:px-10 lg:py-12">
             <div className="max-w-[980px]">
               <div className="flex items-center gap-3 text-[var(--color-ink)]">
                 <h3 className="font-serif text-[clamp(2rem,2.2vw,3rem)] italic leading-[1.15] tracking-[-0.04em]">

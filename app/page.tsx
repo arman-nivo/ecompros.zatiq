@@ -311,45 +311,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section section--tight" id="process" aria-labelledby="process-title">
-        <div className="section__inner">
-          <div className="section__head">
-            <div>
-              <p className="section__label" data-cinematic="rise">
-                Process
-              </p>
-              <h2
-                className="section__title"
-                data-cinematic="clip"
-                data-cinematic-delay="1"
-                id="process-title"
-              >
-                From store backlog to steady operations.
-              </h2>
-            </div>
-            <p className="section__copy" data-cinematic="rise" data-cinematic-delay="2">
-              Our virtual assistant process is designed for ecommerce teams that
-              need reliable execution, clear communication, and fewer daily tasks
-              competing for the founder&apos;s attention.
-            </p>
-          </div>
 
-          <div className="process-grid">
-            {processSteps.map((step, index) => (
-              <article
-                className="process-step"
-                data-cinematic="rise"
-                data-cinematic-delay={`${index + 1}`}
-                key={step.title}
-              >
-                <span className="process-step__mark">{step.mark}</span>
-                <h3>{step.title}</h3>
-                <p>{step.body}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section className="section section--tight client-section" id="proof" aria-labelledby="proof-title">
         <div className="section__inner section__inner--wide">
@@ -424,10 +386,51 @@ export default function Home() {
         </div>
       </section>
 
+
+            <section className="section section--tight" id="process" aria-labelledby="process-title">
+        <div className="section__inner">
+          <div className="section__head">
+            <div>
+              {/* <p className="section__label" data-cinematic="rise">
+                Process
+              </p> */}
+              <h2
+                className="section__title"
+                data-cinematic="clip"
+                data-cinematic-delay="1"
+                id="process-title"
+              >
+                From store backlog to steady operations.
+              </h2>
+            </div>
+            <p className="section__copy" data-cinematic="rise" data-cinematic-delay="2">
+              Our virtual assistant process is designed for ecommerce teams that
+              need reliable execution, clear communication, and fewer daily tasks
+              competing for the founder&apos;s attention.
+            </p>
+          </div>
+
+          <div className="process-grid">
+            {processSteps.map((step, index) => (
+              <article
+                className="process-step"
+                data-cinematic="rise"
+                data-cinematic-delay={`${index + 1}`}
+                key={step.title}
+              >
+                <span className="process-step__mark">{step.mark}</span>
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="pricing-cta section section--tight" id="final-cta" aria-labelledby="final-cta-title">
         <div className="section__inner pricing-cta__inner">
           <div className="pricing-cta__copy" data-cinematic="rise">
-            <p className="section__label">Human-powered ecommerce operations. 24/7.</p>
+            {/* <p className="section__label">Human-powered ecommerce operations. 24/7.</p> */}
             <h2 className="section__title" id="final-cta-title">
               Focus on Growing Your Business.
             </h2>
