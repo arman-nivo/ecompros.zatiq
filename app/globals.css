@@ -1298,12 +1298,6 @@ html[data-cinematics="active"] [data-cinematic-delay="6"] {
   font-weight: 800;
 }
 
-.pricing-card__cadence {
-  color: var(--color-muted-2);
-  font-family: var(--font-body);
-  font-size: var(--text-sm);
-  font-weight: 600;
-}
 
 .pricing-card__cap {
   color: var(--color-muted);

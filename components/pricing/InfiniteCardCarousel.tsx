@@ -93,7 +93,7 @@ export default function InfiniteCardCarousel({ ariaLabel, cards }: InfiniteCardC
                 <span className="pricing-card__body">
                   <span className="pricing-card__price">
                     {card.price}
-                    <span className="pricing-card__cadence">{card.priceSuffix}</span>
+                   
                   </span>
                   <span className="pricing-card__cap">{card.orderCapLabel}</span>
                 </span>
