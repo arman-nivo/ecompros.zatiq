@@ -77,7 +77,7 @@ export default function PricingPage() {
 
           <div className="pricing-cta__action" data-cinematic="rise" data-cinematic-delay="2">
             <HoleRevealButton className="btn btn--primary btn--lg pricing-cta__button" href="/booking">
-              Explore Plans
+              Contact Us
               <ArrowRight aria-hidden="true" size={18} />
             </HoleRevealButton>
           </div>

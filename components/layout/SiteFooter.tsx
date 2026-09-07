@@ -19,24 +19,25 @@ const footerLinks = [
 
 const socialLinks = [
   {
-    href: "https://www.linkedin.com/company/EcomPros",
+    href: "https://www.linkedin.com/company/zatiq/posts/?feedView=all",
     label: "LinkedIn",
     icon: <LinkedinIcon />,
   },
   {
-    href: "https://www.facebook.com/EcomPros",
+    href: "https://www.facebook.com/Zatiqglobal",
     label: "Facebook",
     icon: <FacebookIcon />,
   },
   {
-    href: "https://www.youtube.com/@EcomPros-s6d",
+    href: "https://www.youtube.com/@zatiqglobal",
     label: "YouTube",
     icon: <YoutubeIcon />,
   },
   {
-    href: "https://www.freelancer.com/u/EcomPros",
-    label: "Freelancer",
-    icon: <BriefcaseBusiness aria-hidden="true" className="site-footer__social-icon" size={18} />,
+    href: "https://www.upwork.com/freelancers/~0187959fb09f4377ab",
+    label: "Freelancer Profile",
+    icon: <BriefcaseBusiness aria-hidden="true" className="Upwork-icon" size={18} />,
+
   },
 ];
 
@@ -186,7 +187,7 @@ export default function SiteFooter() {
           
         </div>
         <div className="site-footer__copyright text-center" data-cinematic="rise" data-cinematic-delay="3" >
-          &copy; {year} {brand.name}. All rights reserved.
+          &copy; {year} {brand.name}. All rights reserved. support by <a href="https://zatiqeasy.com/" target="_blank" rel="noopener noreferrer">ZatiqEasy</a>
         </div>
       </div>
     </footer>
