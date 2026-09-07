@@ -390,7 +390,7 @@ export default function ServicesSection() {
                 save your team the most time this month.
               </p>
             </div>
-            <MagneticButton href="#booking" className="shrink-0">
+            <MagneticButton href="booking" className="shrink-0">
               Talk to our team
             </MagneticButton>
           </div>
