@@ -61,17 +61,17 @@ const capabilities: Capability[] = [
   {
     icon: Users,
     title: "People",
-    body: "Human judgment, communication and execution.",
+    body: "Experienced ecommerce specialists providing human judgment, communication and execution.",
   },
   {
     icon: Workflow,
     title: "Automation",
-    body: "Efficient workflows for repetitive operations.",
+    body: "Efficient workflows that streamline repetitive operations and keep your business moving.",
   },
   {
     icon: Sparkles,
     title: "AI",
-    body: "Smarter tools, content and processes.",
+    body: "Smarter tools, content and processes that help your ecommerce operation work better.",
   },
 ];
 
@@ -236,38 +236,66 @@ export default function Home() {
 
       <ServicesSection />
 
-      <section className="section" id="difference" aria-labelledby="difference-title">
+      <section
+        className="section"
+        id="difference"
+        aria-labelledby="difference-title"
+      >
         <div className="section__inner section__inner--wide">
+
           <div className="section__head">
             <div>
-              <p className="section__label" data-cinematic="rise">
+              <p
+                className="section__label"
+                data-cinematic="rise"
+              >
                 The Difference
               </p>
+
               <h2
                 className="section__title"
                 data-cinematic="clip"
                 data-cinematic-delay="1"
                 id="difference-title"
               >
-                People + Technology. Working Together.
+                People + Technology.
+                <br />
+                Working Together.
               </h2>
             </div>
-            <p className="section__copy" data-cinematic="rise" data-cinematic-delay="2">
-              We combine experienced ecommerce specialists with automation and AI to
-              make your operation faster, smarter and more responsive.
+
+            <p
+              className="section__copy"
+              data-cinematic="rise"
+              data-cinematic-delay="2"
+            >
+              EcomPros combines experienced ecommerce specialists with
+              automation and AI to make your operations faster, smarter
+              and more responsive.
             </p>
           </div>
 
-          <div className="capability-list" data-cinematic="rise" data-cinematic-delay="3">
+          <div
+            className="capability-list"
+            data-cinematic="rise"
+            data-cinematic-delay="3"
+          >
             {capabilities.map((capability) => {
               const Icon = capability.icon;
 
               return (
-                <article className="capability-item" key={capability.title}>
+                <article
+                  className="capability-item"
+                  key={capability.title}
+                >
                   <span className="capability-item__icon">
-                    <Icon aria-hidden={true} size={20} />
+                    <Icon
+                      aria-hidden={true}
+                      size={20}
+                    />
                   </span>
-                  <div>
+
+                  <div className="capability-item__content">
                     <h3>{capability.title}</h3>
                     <p>{capability.body}</p>
                   </div>
@@ -275,6 +303,7 @@ export default function Home() {
               );
             })}
           </div>
+
         </div>
       </section>
 
