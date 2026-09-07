@@ -10,6 +10,7 @@ import ScrollCinematics from "@/components/motion/ScrollCinematics";
 import Button from "@/components/ui/Button";
 import PortfolioPreview from "@/components/portfolio/PortfolioPreview";
 import { portfolioProjects, portfolioTabs } from "@/lib/portfolio";
+import TestimonialCarousel from "@/components/testimonials/TestimonialCarousel";
 
 type Capability = {
   body: string;
@@ -307,6 +308,7 @@ export default function Home() {
         </div>
       </section>
 
+
       <section
         className="section portfolio-preview"
         id="portfolio-preview"
@@ -416,7 +418,7 @@ export default function Home() {
       </section>
 
 
-            <section className="section section--tight" id="process" aria-labelledby="process-title">
+      <section className="section section--tight" id="process" aria-labelledby="process-title">
         <div className="section__inner">
           <div className="section__head">
             <div>
@@ -456,6 +458,8 @@ export default function Home() {
         </div>
       </section>
 
+      
+
       <section className="pricing-cta section section--tight" id="final-cta" aria-labelledby="final-cta-title">
         <div className="section__inner pricing-cta__inner">
           <div className="pricing-cta__copy" data-cinematic="rise">
@@ -477,6 +481,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      
+      <TestimonialCarousel />
+
     </div>
   );
 }

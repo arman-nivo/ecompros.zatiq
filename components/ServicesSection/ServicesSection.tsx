@@ -232,7 +232,7 @@ export default function ServicesSection() {
         <div className="grid grid-cols-1 overflow-hidden bg-transparent lg:grid-cols-[0.95fr_1.2fr]">
           <div
             ref={leftPanelRef}
-            className="relative h-auto overflow-hidden rounded-[50px] bg-[var(--color-brand-accent)] px-5 py-10 md:px-8 lg:px-10"
+            className="relative h-auto overflow-hidden rounded-[50px]  px-5 py-10 md:px-8 lg:px-10"
           >
             <AmbientOrb />
             <nav
@@ -300,7 +300,7 @@ export default function ServicesSection() {
                         ease: "power2.out",
                       });
                     }}
-                    className={`relative z-[1] w-full text-left font-semibold uppercase leading-[0.9] tracking-[-0.06em] text-white transition-all duration-300 ${
+                    className={`relative z-[1] w-full text-left font-semibold uppercase leading-[0.9] tracking-[-0.06em] text-black transition-all duration-300 ${
                       isActive
                         ? "opacity-100"
                         : "opacity-80 hover:opacity-100"

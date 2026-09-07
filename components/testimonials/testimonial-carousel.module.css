@@ -1,0 +1,320 @@
+/* ===================================================================
+   Testimonial Carousel — theme tokens
+   Light mode is the default. Dark mode activates when an ancestor
+   (usually <html> or <body>) carries a `.dark` class — the standard
+   next-themes / Tailwind `darkMode: "class"` convention.
+   If your project already exposes theme variables (e.g. from Tailwind
+   config or a globals.css :root block), swap the values below for
+   `var(--your-token)` instead of hard-coded hex — see the guide.
+   =================================================================== */
+
+.wrap {
+  --tc-bg: #ede9df;           /* stage background, warm paper grey */
+  --tc-paper: #f7f5ef;        /* card surface */
+  --tc-paper-edge: #ddd8c8;   /* card border / perforation */
+  --tc-ink: #201e19;          /* primary text */
+  --tc-ink-soft: #6b665a;     /* secondary text */
+  --tc-accent: #2f5233;       /* stamp-green accent */
+  --tc-accent-contrast: #eef3ea;
+  --tc-shadow: rgba(32, 30, 25, 0.18);
+
+  --tc-font-sans: "General Sans", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --tc-font-mono: "IBM Plex Mono", "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  margin-inline: auto;
+  padding: 2.5rem 1.5rem 2rem;
+  color: var(--tc-ink);
+  font-family: var(--tc-font-sans);
+}
+
+
+
+:global(.dark) .wrap {
+  --tc-bg: #14171c;
+  --tc-paper: #1c2027;
+  --tc-paper-edge: #2b303a;
+  --tc-ink: #ece9e2;
+  --tc-ink-soft: #9a9a92;
+  --tc-accent: #6fbf73;
+  --tc-accent-contrast: #10190f;
+  --tc-shadow: rgba(0, 0, 0, 0.55);
+}
+
+/* ---------------- intro / counter ---------------- */
+
+.intro {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.counter {
+  display: flex;
+  align-items: baseline;
+  gap: 0.15em;
+  font-family: var(--tc-font-mono);
+  font-size: 0.85rem;
+  color: var(--tc-ink-soft);
+  letter-spacing: 0.02em;
+}
+
+.counterCurrent {
+  color: var(--tc-accent);
+  font-weight: 600;
+}
+
+.counterDivider {
+  opacity: 0.5;
+}
+
+.heading {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--tc-ink);
+}
+
+/* ---------------- stage & stack ---------------- */
+
+.stage {
+  position: relative;
+  height: 420px;
+  outline: none;
+}
+
+.card {
+  --pos: 0;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--tc-paper);
+  border: 1px solid var(--tc-paper-edge);
+  border-radius: 6px;
+  padding: 1.65rem 1.75rem 1.4rem;
+  box-shadow: 0 calc(6px + var(--pos) * 4px) calc(18px + var(--pos) * 6px) var(--tc-shadow);
+  transform: translate(calc(var(--pos) * 16px), calc(var(--pos) * -14px))
+    scale(calc(1 - var(--pos) * 0.055)) rotate(calc(var(--pos) * 1.4deg));
+  transform-origin: 90% 10%;
+}
+
+.card[data-front="true"] {
+  cursor: default;
+}
+
+.perforation {
+  position: absolute;
+  left: -1px;
+  top: 22%;
+  bottom: 22%;
+  width: 1px;
+  border-left: 2px dashed var(--tc-paper-edge);
+}
+
+.cardHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.1rem;
+}
+
+.role {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.35;
+  max-width: 30ch;
+  color: var(--tc-ink);
+}
+
+.quote {
+  flex: 1;
+  margin: 0 0 1.35rem;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: var(--tc-ink);
+}
+
+.ledger {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-top: 0.9rem;
+  border-top: 1px dashed var(--tc-paper-edge);
+  font-family: var(--tc-font-mono);
+  font-size: 0.78rem;
+}
+
+.ledgerRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.ledgerLabel {
+  color: var(--tc-ink-soft);
+}
+
+.ledgerValue {
+  color: var(--tc-ink);
+  text-align: right;
+}
+
+.cardFoot {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--tc-paper-edge);
+}
+
+.footLabel {
+  font-size: 0.78rem;
+  color: var(--tc-ink-soft);
+  font-family: var(--tc-font-mono);
+}
+
+.footAmount {
+  font-family: var(--tc-font-mono);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--tc-accent);
+}
+
+.depthTag {
+  display: none; /* debug aid; flip on during development if useful */
+}
+
+/* ---------------- rating stamp ---------------- */
+
+.stamp {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-8deg);
+}
+
+.stampRing {
+  position: absolute;
+  inset: 0;
+  fill: none;
+  stroke: var(--tc-accent);
+  stroke-width: 1.4;
+  opacity: 0.8;
+}
+
+.stampRing circle {
+  fill: none;
+  stroke: var(--tc-accent);
+  stroke-width: 1.4;
+}
+
+.stampRing text {
+  font-family: var(--tc-font-mono);
+  font-size: 6.4px;
+  letter-spacing: 0.5px;
+  fill: var(--tc-accent);
+}
+
+.stampRating {
+  font-family: var(--tc-font-mono);
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--tc-accent);
+}
+
+/* ---------------- controls ---------------- */
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  margin-top: 1.75rem;
+}
+
+.punchBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--tc-paper-edge);
+  background: var(--tc-paper);
+  color: var(--tc-ink);
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.punchBtn:hover {
+  border-color: var(--tc-accent);
+  color: var(--tc-accent);
+}
+
+.punchBtn:focus-visible {
+  outline: 2px solid var(--tc-accent);
+  outline-offset: 2px;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: var(--tc-paper-edge);
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.dot[data-active="true"] {
+  background: var(--tc-accent);
+  transform: scale(1.4);
+}
+
+.dot:focus-visible {
+  outline: 2px solid var(--tc-accent);
+  outline-offset: 3px;
+}
+
+/* ---------------- responsive ---------------- */
+
+@media (max-width: 480px) {
+  .stage {
+    height: 480px;
+  }
+
+  .card {
+    padding: 1.35rem 1.25rem 1.15rem;
+  }
+
+  .quote {
+    font-size: 0.95rem;
+  }
+}
+
+/* ---------------- reduced motion ---------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}
+
