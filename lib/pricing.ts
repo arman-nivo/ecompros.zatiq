@@ -15,18 +15,16 @@ export const monthlyPlans: readonly MonthlyPlan[] = [
 // applied uniformly across tiers.
 export const monthlyOrderCap = 30_000;
 
-export type PricingPeriod = "monthly" | "3-month" | "6-month" | "yearly";
+export type PricingPeriod = "monthly" | "6-month" | "yearly";
 
 export const periodOrder: readonly PricingPeriod[] = [
   "monthly",
-  "3-month",
   "6-month",
   "yearly",
 ];
 
 export const periodLabels: Record<PricingPeriod, string> = {
   monthly: "Monthly",
-  "3-month": "3 Month",
   "6-month": "6 Month",
   yearly: "Yearly",
 };
@@ -35,7 +33,6 @@ export const periodLabels: Record<PricingPeriod, string> = {
 // order cap is the monthly rate multiplied by this figure.
 export const periodMonths: Record<PricingPeriod, number> = {
   monthly: 1,
-  "3-month": 3,
   "6-month": 6,
   yearly: 12,
 };
