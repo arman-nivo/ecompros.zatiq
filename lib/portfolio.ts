@@ -1,7 +1,7 @@
 export type PortfolioTab = {
   description?: string;
   emptyState?: string;
-  id: "virtual-assistant" | "motion-videos" | "marketing-seo";
+  id: "motion-videos" |  "virtual-assistant" | "marketing-seo" ;
   label: string;
 };
 
@@ -46,18 +46,19 @@ export type PortfolioProject = {
 };
 
 export const portfolioTabs: PortfolioTab[] = [
-  {
-    id: "virtual-assistant",
-    label: "Virtual Assistant",
-    description:
-      "Practical ecommerce support for product uploads, catalog updates, marketplace operations, order follow-up, and customer care.",
-  },
+ 
   {
     id: "motion-videos",
     label: "Motion/Videos",
     description:
       "Motion edits, podcast visuals, and short-form commercials shaped for clear viewing, brand fit, and social delivery.",
     emptyState: "Motion and video work will appear here when the first public set is ready.",
+  },
+   {
+    id: "virtual-assistant",
+    label: "Virtual Assistant",
+    description:
+      "Practical ecommerce support for product uploads, catalog updates, marketplace operations, order follow-up, and customer care.",
   },
   {
     id: "marketing-seo",
@@ -68,34 +69,7 @@ export const portfolioTabs: PortfolioTab[] = [
 ];
 
 export const portfolioProjects: PortfolioProject[] = [
-  {
-    slug: "ecommerce-virtual-assistant",
-    title: "E-commerce Virtual Assistant",
-    category: "virtual-assistant",
-    summary:
-      "Ecommerce operations support that keeps catalogs, products, orders, customers, and daily store tasks moving.",
-    cover: {
-      src: "/services/virtual-assistant.jpeg",
-      alt: "E-commerce virtual assistant service workspace preview.",
-      width: 1536,
-      height: 1024,
-    },
-    media: [],
-    services: [
-      "Product uploads",
-      "Catalog management",
-      "Marketplace operations",
-      "Order follow-up",
-      "Customer care",
-    ],
-    stackLabel: "Focus",
-    stack: ["Shopify", "Marketplaces", "Order management", "Customer support", "Weekly reporting"],
-    description: [
-      "E-commerce stores often lose time to repetitive catalog, marketplace, order, and customer tasks. This service provides reliable operational support around the workflows the store already uses.",
-      "Work can include product listing updates, collection and inventory maintenance, marketplace administration, order status follow-up, customer responses, and clear escalation notes when an issue needs the owner's decision.",
-      "The engagement starts with a practical task map and reporting rhythm, then turns repeatable store work into a consistent operating routine the team can see and improve.",
-    ],
-  },
+
   {
     slug: "zoho-motion-editing",
     title: "Zoho",
@@ -290,6 +264,35 @@ export const portfolioProjects: PortfolioProject[] = [
       "We produced podcast content for the founder of A Cool Agency, handling end-to-end video editing, motion graphics, and brand-aligned visual design.",
       "The edit uses custom animations, dynamic captions, and clean transitions to turn raw conversation footage into a polished, share-ready piece.",
       "The final delivery was optimized for social platforms while preserving a visual language that felt aligned with the agency's identity.",
+    ],
+  },
+
+    {
+    slug: "ecommerce-virtual-assistant",
+    title: "E-commerce Virtual Assistant",
+    category: "virtual-assistant",
+    summary:
+      "Ecommerce operations support that keeps catalogs, products, orders, customers, and daily store tasks moving.",
+    cover: {
+      src: "/services/virtual-assistant.jpeg",
+      alt: "E-commerce virtual assistant service workspace preview.",
+      width: 1536,
+      height: 1024,
+    },
+    media: [],
+    services: [
+      "Product uploads",
+      "Catalog management",
+      "Marketplace operations",
+      "Order follow-up",
+      "Customer care",
+    ],
+    stackLabel: "Focus",
+    stack: ["Shopify", "Marketplaces", "Order management", "Customer support", "Weekly reporting"],
+    description: [
+      "E-commerce stores often lose time to repetitive catalog, marketplace, order, and customer tasks. This service provides reliable operational support around the workflows the store already uses.",
+      "Work can include product listing updates, collection and inventory maintenance, marketplace administration, order status follow-up, customer responses, and clear escalation notes when an issue needs the owner's decision.",
+      "The engagement starts with a practical task map and reporting rhythm, then turns repeatable store work into a consistent operating routine the team can see and improve.",
     ],
   },
   {

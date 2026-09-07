@@ -2983,6 +2983,7 @@ html[data-theme="light"] .client-marquee__image {
   background: color-mix(in oklch, var(--color-paper-2) 84%, transparent);
   padding: var(--space-xs);
   box-shadow: var(--shadow-soft);
+  justify-content: center;
 }
 
 .portfolio-tabs::-webkit-scrollbar {
@@ -4406,6 +4407,7 @@ html[data-theme="light"] .client-marquee__image {
     grid-column: 1 / -1;
     justify-self: stretch;
     margin: 0;
+
   }
 
   .portfolio-grid {
@@ -4787,6 +4789,7 @@ html[data-theme="light"] .client-marquee__image {
 
   .portfolio-tabs {
     border-radius: var(--radius-md);
+
   }
 
   .portfolio-tabs__tab {
