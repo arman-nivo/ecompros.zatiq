@@ -4321,6 +4321,11 @@ html[data-theme="light"] .client-marquee__image {
     max-height: 5rem;
   }
 
+  
+  .site-footer__links-dropdown {
+  display: none;
+}
+
 
   
 }
@@ -4770,6 +4775,38 @@ html[data-theme="light"] .client-marquee__image {
 
 /* end dropdown */
 
+/* footer new */
+.site-footer__meta {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  width: 100%;
+}
+
+.site-footer__brand {
+  justify-self: start;
+}
+
+.footer-links-desktop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  justify-self: center;
+}
+
+.site-footer__socials {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  justify-self: end;
+}
+
+
+/* footer new end */
+
   .site-footer__links {
     grid-column: 1 / -1;
     justify-content: flex-start;
@@ -5112,5 +5149,73 @@ html[data-theme="light"] .client-marquee__image {
 
   .team-profile-dialog[open] .team-profile-dialog__sheet {
     animation-name: team-dialog-fade;
+  }
+}
+
+
+@media (max-width: 425px) {
+  .site-footer__meta {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 2rem 1rem;
+  }
+
+  /* Logo */
+  .site-footer__brand {
+    justify-self: start;
+  }
+
+  /* Social icons */
+  .site-footer__socials {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* Hide desktop links */
+  .footer-links-desktop {
+    display: none;
+  }
+
+  /* Mobile dropdown */
+  .site-footer__links-dropdown {
+    display: block;
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+}
+
+@media (max-width: 425px) {
+  .site-footer__links-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: transparent;
+    border: none;
+    padding: 0;
+
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .footer-dropdown-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1rem;
+    line-height: 1;
+
+    transition: transform 0.25s ease;
+  }
+
+  .footer-dropdown-arrow.active {
+    transform: rotate(180deg);
   }
 }

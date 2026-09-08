@@ -523,7 +523,7 @@ export const StaggeredMenu = ({
             draggable={false}
             width={3500}
             height={852}
-            priority
+            
             sizes="9rem"
           />
           {openLogoUrl && (
@@ -532,6 +532,7 @@ export const StaggeredMenu = ({
               alt=""
               aria-hidden="true"
               className="sm-logo-img sm-logo-img--open"
+            
               draggable={false}
               width={3508}
               height={852}

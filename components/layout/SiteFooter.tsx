@@ -101,10 +101,10 @@ function YoutubeIcon() {
 export default function SiteFooter() {
   const year = new Date().getFullYear();
   const footerRef = useRef<HTMLElement>(null);
-  const windowSize = typeof window !== "undefined" ? window.innerWidth : 0;
-  const isMobile = windowSize < 426;
+
 
   const [footerLinksOpen, setFooterLinksOpen] = useState(false);
+  
   const handlePointerMove = (event: PointerEvent<HTMLElement>) => {
     if (event.pointerType !== "mouse") return;
     const el = footerRef.current;
@@ -158,130 +158,102 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        {isMobile ? (
-          <div className="site-footer__meta" data-cinematic="rise"  data-cinematic-delay="2">
-            {/* Logo + Social Links */}
-            <div className="minidevice">
-              <Link
-                href="/"
-                className="site-footer__brand"
-                aria-label={`${brand.name} home`}
-              >
-                <ThemeLogo
-                  alt={`${brand.name} logo`}
-                  className="site-footer__logo"
-                  priority
-                />
-              </Link>
+        <div
+          className="site-footer__meta"
+          data-cinematic="rise"
+          data-cinematic-delay="2"
+        >
+          {/* Logo */}
+          <Link
+            href="/"
+            className="site-footer__brand"
+            aria-label={`${brand.name} home`}
+          >
+            <ThemeLogo
+              alt={`${brand.name} logo`}
+              className="site-footer__logo"
+              priority
+            />
+          </Link>
 
-              <nav aria-label="Social media" className="site-footer__socials">
-                {socialLinks.map((item) => (
-                  <a
+          {/* Desktop Footer Links */}
+          <nav
+            aria-label="Footer"
+            className="site-footer__links footer-links-desktop"
+          >
+            {footerLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="footer-link"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Social Links */}
+          <nav
+            aria-label="Social media"
+            className="site-footer__socials"
+          >
+            {socialLinks.map((item) => (
+              <a
+                key={item.href}
+                aria-label={`${brand.name} on ${item.label}`}
+                className="site-footer__social-link"
+                href={item.href}
+                rel="noopener noreferrer"
+                target="_blank"
+                title={item.label}
+              >
+                {item.icon}
+              </a>
+            ))}
+          </nav>
+
+          {/* Mobile Important Links Dropdown */}
+          <div className="site-footer__links-dropdown">
+            <button
+              type="button"
+              className="site-footer__links-toggle"
+              onClick={() => setFooterLinksOpen((previous) => !previous)}
+              aria-expanded={footerLinksOpen}
+              aria-controls="footer-links-dropdown"
+            >
+              <span>Important Links</span>
+
+              <span
+                className={
+                  footerLinksOpen
+                    ? "footer-dropdown-arrow active"
+                    : "footer-dropdown-arrow"
+                }
+                aria-hidden="true"
+              >
+                ↑
+              </span>
+            </button>
+
+            {footerLinksOpen && (
+              <nav
+                id="footer-links-dropdown"
+                aria-label="Footer"
+                className="site-footer__links footer-links-dropdown"
+              >
+                {footerLinks.map((item) => (
+                  <Link
                     key={item.href}
-                    aria-label={`${brand.name} on ${item.label}`}
-                    className="site-footer__social-link"
                     href={item.href}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                    title={item.label}
+                    className="footer-link"
                   >
-                    {item.icon}
-                  </a>
+                    {item.label}
+                  </Link>
                 ))}
               </nav>
-            </div>
-
-            {/* Important Links */}
-            <div className="site-footer__links-dropdown">
-              <button
-                type="button"
-                className="site-footer__links-toggle"
-                onClick={() => setFooterLinksOpen(!footerLinksOpen)}
-                aria-expanded={footerLinksOpen}
-                aria-controls="footer-links-dropdown"
-              >
-                Important Links
-
-                <span
-                  className={
-                    footerLinksOpen
-                      ? "footer-dropdown-arrow active"
-                      : "footer-dropdown-arrow"
-                  }
-                >
-                  ↓
-                </span>
-              </button>
-
-              {footerLinksOpen && (
-                <nav
-                  id="footer-links-dropdown"
-                  aria-label="Footer"
-                  className="site-footer__links footer-links-dropdown"
-                >
-                  {footerLinks.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className="footer-link"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </nav>
-              )}
-            </div>
+            )}
           </div>
-        ) : (
-          <div
-            className="site-footer__meta"
-            data-cinematic="rise"
-            data-cinematic-delay="2"
-          >
-            {/* Logo */}
-            <Link
-              href="/"
-              className="site-footer__brand"
-              aria-label={`${brand.name} home`}
-            >
-              <ThemeLogo
-                alt={`${brand.name} logo`}
-                className="site-footer__logo"
-                priority
-              />
-            </Link>
-
-            {/* Footer Links */}
-            <nav aria-label="Footer" className="site-footer__links">
-              {footerLinks.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="footer-link"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-
-            {/* Social Links */}
-            <nav aria-label="Social media" className="site-footer__socials">
-              {socialLinks.map((item) => (
-                <a
-                  key={item.href}
-                  aria-label={`${brand.name} on ${item.label}`}
-                  className="site-footer__social-link"
-                  href={item.href}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  title={item.label}
-                >
-                  {item.icon}
-                </a>
-              ))}
-            </nav>
-          </div>
-        )}
+        </div>
 
 
 

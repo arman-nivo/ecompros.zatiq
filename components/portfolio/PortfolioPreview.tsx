@@ -446,6 +446,7 @@ function renderPreviewCardMedia(project: PortfolioProject) {
         {/* Plain img: marketing logos include SVGs, which the Next image optimizer does not serve. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
+          loading="eager"
           alt=""
           height={project.logo.height}
           src={project.logo.src}
@@ -475,6 +476,7 @@ function renderPreviewProjectLogo(project: PortfolioProject) {
         <span className="portfolio-preview-card__logo">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
+            loading="eager"
             alt={project.logo.alt}
             height={project.logo.height}
             src={project.logo.src}
@@ -491,6 +493,7 @@ function renderPreviewProjectLogo(project: PortfolioProject) {
           height={project.logo.height}
           src={project.logo.src}
           width={project.logo.width}
+          priority
         />
       </span>
     );

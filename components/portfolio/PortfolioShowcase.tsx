@@ -384,6 +384,7 @@ function renderCardMedia(project: PortfolioProject) {
         {/* Plain img: the marketing logos include SVGs, which the Next image optimizer does not serve. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
+          loading="eager"
           alt=""
           height={project.logo.height}
           src={project.logo.src}
@@ -434,6 +435,7 @@ function renderProjectLogo(project: PortfolioProject) {
         <span className="portfolio-card__logo">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
+            loading="eager"
             alt={project.logo.alt}
             height={project.logo.height}
             src={project.logo.src}
