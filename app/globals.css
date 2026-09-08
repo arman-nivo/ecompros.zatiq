@@ -2975,8 +2975,8 @@ html[data-theme="light"] .client-marquee__image {
   flex-wrap: nowrap;
   gap: var(--space-xs);
   align-items: center;
-  max-width: 100%;
-  overflow-x: auto;
+  max-width: fit-content;
+  overflow-x: scroll;
   scrollbar-width: none;
   border: var(--rule-hair) solid var(--color-rule);
   border-radius: var(--radius-pill);
@@ -4321,7 +4321,7 @@ html[data-theme="light"] .client-marquee__image {
     max-height: 5rem;
   }
 
-  
+
   .site-footer__links-dropdown {
   display: none;
 }
@@ -4419,7 +4419,7 @@ html[data-theme="light"] .client-marquee__image {
 
   .portfolio-tabs {
     grid-column: 1 / -1;
-    justify-self: stretch;
+    justify-self: center;
     margin: 0;
 
   }
@@ -4895,8 +4895,21 @@ html[data-theme="light"] .client-marquee__image {
 
   .portfolio-tabs {
     border-radius: var(--radius-md);
+    padding: var(--space-xs);
+    box-shadow: var(--shadow-soft);
+    justify-content: flex-start;
 
-  }
+    gap: var(--space-xs);
+    scrollbar-width: none;
+    border: var(--rule-hair) solid var(--color-rule);
+    border-radius: var(--radius-pill);
+    background: var(--color-paper-2);
+    flex-wrap: nowrap;
+    align-items: center;
+    max-width: fit-content;
+    display: flex;
+    overflow-x: scroll;
+}
 
   .portfolio-tabs__tab {
     flex: 1 1 100%;
