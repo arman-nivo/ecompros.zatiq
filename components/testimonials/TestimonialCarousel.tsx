@@ -90,7 +90,7 @@ export default function TestimonialCarousel() {
         aria-label="Review stack, use arrow keys to navigate"
       >
         {testimonials.map((t, i) => (
-          <TestimonialCard
+          <TestimonialCard 
             key={t.id}
             testimonial={t}
             isFront={i === frontIndex}

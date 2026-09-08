@@ -18,6 +18,7 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
       <div
         ref={ref}
         className={styles.card}
+        style={{padding: "3.65rem 2.5rem 2.4rem"}}
         data-front={isFront}
         aria-hidden={!isFront}
         tabIndex={isFront ? 0 : -1}
@@ -49,10 +50,10 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
           </div>
         </div>
 
-        <div className={styles.cardFoot}>
+        {/* <div className={styles.cardFoot}>
           <span className={styles.footLabel}>Total paid</span>
           <span className={styles.footAmount}>{earned}</span>
-        </div>
+        </div> */}
 
         <span className={styles.depthTag} aria-hidden="true">
           {depth}
