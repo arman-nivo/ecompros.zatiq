@@ -300,10 +300,10 @@ export default function ServicesSection() {
                         ease: "power2.out",
                       });
                     }}
-                    className={`relative z-[1] w-full text-left font-semibold uppercase leading-[0.9] tracking-[-0.06em] text-black transition-all duration-300 ${
+                    className={`relative z-[1] w-full text-left font-semibold uppercase leading-[0.9] tracking-[-0.06em] transition-all duration-300 ${
                       isActive
-                        ? "opacity-100"
-                        : "opacity-80 hover:opacity-100"
+                        ? "opacity-100 text-orange-500"
+                        : "opacity-80 text-black hover:opacity-100"
                     }`}
                     style={{
                       transformOrigin: "left center",
