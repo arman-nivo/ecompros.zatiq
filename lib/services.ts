@@ -13,6 +13,16 @@ export type ServiceSlug = (typeof serviceSlugs)[number];
 export type ServiceCapability = {
   body: string;
   title: string;
+  group?: string;
+  highlights?: readonly string[];
+  icon?: string;
+  tools?: readonly string[];
+  visual?: string;
+};
+
+export type ServiceCapabilityGroup = {
+  summary: string;
+  title: string;
 };
 
 export type ServiceFAQ = {
@@ -34,6 +44,7 @@ export type ServiceContent = {
   audienceFit: readonly string[];
   bookingLabel: string;
   capabilities: readonly ServiceCapability[];
+  capabilityGroups?: readonly ServiceCapabilityGroup[];
   deliverables: readonly string[];
   faqs: readonly ServiceFAQ[];
   handoff: string;
@@ -348,36 +359,71 @@ export const services = [
       "A marketplace team needs support with customer messages, order status, and daily admin.",
       "A founder wants to hand off repeatable ecommerce tasks without losing visibility.",
     ],
+    capabilityGroups: [
+      { title: "Products & catalog", summary: "Accurate, well-presented products your customers can trust." },
+      { title: "Orders & customers", summary: "Every order tracked and every customer answered." },
+      { title: "Marketplace & store admin", summary: "The daily platform work that keeps your store running." },
+    ],
     capabilities: [
       {
         title: "Product listing management",
         body:
           "Create, update, and organize product titles, descriptions, images, variants, pricing, and collection placement.",
+        group: "Products & catalog",
+        icon: "tag",
+        visual: "product-listing",
+        highlights: ["Titles & descriptions", "Images & variants", "Pricing"],
+        tools: ["shopify", "amazon", "etsy"],
       },
       {
         title: "Catalog and inventory support",
         body:
           "Keep product information, stock notes, spreadsheets, and category structures accurate across the store.",
+        group: "Products & catalog",
+        icon: "boxes",
+        visual: "inventory",
+        highlights: ["Stock levels", "Spreadsheets", "Categories"],
+        tools: ["shopify", "sheets"],
       },
       {
         title: "Marketplace operations",
         body:
           "Support listings, marketplace updates, order checks, message handling, and routine platform administration.",
+        group: "Marketplace & store admin",
+        icon: "store",
+        visual: "marketplaces",
+        highlights: ["Listings", "Order checks", "Messages"],
+        tools: ["amazon", "etsy", "walmart"],
       },
       {
         title: "Order and fulfillment follow-up",
         body:
           "Track order status, flag exceptions, coordinate follow-up, and keep customers informed when something changes.",
+        group: "Orders & customers",
+        icon: "truck",
+        visual: "order-timeline",
+        highlights: ["Status tracking", "Exceptions flagged", "Customer updates"],
+        tools: ["shopify", "amazon"],
       },
       {
         title: "Customer care",
         body:
           "Handle repeatable customer questions with a clear tone, useful context, and escalation notes for the store owner.",
+        group: "Orders & customers",
+        icon: "messages",
+        visual: "chat",
+        highlights: ["Clear replies", "Escalation notes", "Consistent tone"],
+        tools: ["gmail", "whatsapp", "messenger"],
       },
       {
         title: "Store administration",
         body:
           "Support promotions, collections, content updates, reporting routines, and the small operational tasks that pile up.",
+        group: "Marketplace & store admin",
+        icon: "clipboard-check",
+        visual: "admin-tasks",
+        highlights: ["Promotions", "Collections", "Weekly reports"],
+        tools: ["shopify", "sheets"],
       },
     ],
     deliverables: [
@@ -465,46 +511,89 @@ export const services = [
       "A podcast, interview, or talking-head clip needs branded pacing and captions.",
       "A campaign needs multiple video cuts for different placements.",
     ],
+    capabilityGroups: [
+      { title: "Plan the story", summary: "Turn rough ideas into a clear, watchable sequence." },
+      { title: "Design the motion", summary: "Movement, type, and captions that fit your brand." },
+      { title: "Edit & deliver", summary: "Cut, resize, and package every file for where it will run." },
+    ],
     capabilities: [
       {
         title: "Storyboarding and script shaping",
         body:
           "Turn rough notes, product clips, or talking points into a sequence that can be watched quickly and understood without context.",
+        group: "Plan the story",
+        icon: "clapperboard",
+        visual: "storyboard",
+        highlights: ["Scene plan", "Script lines", "Shot list"],
       },
       {
         title: "Product explainers",
         body:
           "Create short motion pieces that show the product value, user flow, or campaign offer without becoming a long tutorial.",
+        group: "Plan the story",
+        icon: "circle-play",
+        visual: "explainer",
+        highlights: ["Product value", "User flow", "Short runtime"],
+        tools: ["youtube"],
       },
       {
         title: "Launch loops",
         body:
           "Build muted website hero loops, social teasers, and investor-update clips that communicate motion without demanding sound.",
+        group: "Design the motion",
+        icon: "repeat",
+        visual: "loop",
+        highlights: ["Website hero", "Social teasers", "Works on mute"],
       },
       {
         title: "Podcast and interview editing",
         body:
           "Cut raw conversations into tighter episodes or short vertical clips with pacing, framing, captions, and brand treatment.",
+        group: "Edit & deliver",
+        icon: "mic",
+        visual: "waveform",
+        highlights: ["Tighter pacing", "Vertical clips", "Captions"],
+        tools: ["premiere", "youtube", "spotify"],
       },
       {
         title: "Captions and readable overlays",
         body:
           "Design captions, speaker labels, titles, lower thirds, and annotations that stay readable across mobile and desktop placements.",
+        group: "Design the motion",
+        icon: "captions",
+        visual: "captions",
+        highlights: ["Captions", "Lower thirds", "Titles"],
+        tools: ["premiere"],
       },
       {
         title: "Motion graphics",
         body:
           "Use typography, UI details, product screens, icons, and transitions to create a visual rhythm that fits the brand.",
+        group: "Design the motion",
+        icon: "sparkles",
+        visual: "keyframes",
+        highlights: ["Typography", "UI animation", "Transitions"],
+        tools: ["after-effects", "figma"],
       },
       {
         title: "Social cutdowns",
         body:
           "Prepare vertical, square, and landscape cuts with platform-specific framing, hooks, and export settings.",
+        group: "Edit & deliver",
+        icon: "smartphone",
+        visual: "aspect-ratios",
+        highlights: ["9:16 vertical", "1:1 square", "16:9 landscape"],
+        tools: ["tiktok", "instagram", "youtube"],
       },
       {
         title: "Export and delivery package",
         body:
           "Deliver named files, aspect-ratio variants, thumbnail direction, and notes for where each asset should be used.",
+        group: "Edit & deliver",
+        icon: "package",
+        visual: "export-files",
+        highlights: ["Named files", "Every size", "Thumbnails"],
+        tools: ["drive", "dropbox"],
       },
     ],
     deliverables: [
@@ -597,46 +686,87 @@ export const services = [
       "An app has roles, auth, or admin access that should be reviewed before launch.",
       "A founder needs practical security support without buying a heavy enterprise program.",
     ],
+    capabilityGroups: [
+      { title: "Accounts & access", summary: "The right people get in, and only see what they should." },
+      { title: "Risks & readiness", summary: "Find weak spots early and be ready if something goes wrong." },
+      { title: "Policies & training", summary: "Security your customers can read and your team can follow." },
+    ],
     capabilities: [
       {
         title: "Security UX",
         body:
           "Design trust, consent, permissions, account recovery, and security settings so users can understand what is happening.",
+        group: "Accounts & access",
+        icon: "shield-check",
+        visual: "security-settings",
+        highlights: ["Consent", "Account recovery", "Clear settings"],
       },
       {
         title: "Authentication review",
         body:
           "Review login, password reset, session behavior, admin access, account states, and user role boundaries.",
+        group: "Accounts & access",
+        icon: "key-round",
+        visual: "login",
+        highlights: ["Login & reset", "Sessions", "Admin access"],
+        tools: ["auth0", "google"],
       },
       {
         title: "Permission model cleanup",
         body:
           "Document who can see what, who can change what, and where role behavior needs safer defaults.",
+        group: "Accounts & access",
+        icon: "users-round",
+        visual: "permissions",
+        highlights: ["Roles", "Who sees what", "Safer defaults"],
       },
       {
         title: "Checklist systems",
         body:
           "Create practical launch, vendor, access, content, and incident checklists that a small team can keep using.",
+        group: "Risks & readiness",
+        icon: "list-checks",
+        visual: "checklist",
+        highlights: ["Launch", "Vendors", "Access"],
+        tools: ["notion"],
       },
       {
         title: "Policy and trust surfaces",
         body:
           "Shape privacy, security, compliance, responsible-use, and internal process pages into readable web content.",
+        group: "Policies & training",
+        icon: "scroll-text",
+        visual: "policy",
+        highlights: ["Privacy", "Security page", "Compliance"],
       },
       {
         title: "Vulnerability hygiene",
         body:
           "Support dependency review, exposed configuration checks, common web risk review, and issue triage for early products.",
+        group: "Risks & readiness",
+        icon: "bug",
+        visual: "scan",
+        highlights: ["Dependencies", "Config checks", "Issue triage"],
+        tools: ["github", "cloudflare"],
       },
       {
         title: "Incident-ready documentation",
         body:
           "Prepare contact flows, escalation notes, access lists, and response steps so the team has a starting point before pressure hits.",
+        group: "Risks & readiness",
+        icon: "siren",
+        visual: "incident-flow",
+        highlights: ["Contacts", "Escalation", "Response steps"],
       },
       {
         title: "Security training material",
         body:
           "Turn security behavior into simple guides, onboarding notes, and team reminders instead of dense policy documents.",
+        group: "Policies & training",
+        icon: "graduation-cap",
+        visual: "training",
+        highlights: ["Simple guides", "Onboarding", "Team reminders"],
+        tools: ["notion"],
       },
     ],
     deliverables: [
@@ -725,46 +855,90 @@ export const services = [
       "A founder wants reusable assets instead of one-off graphics.",
       "The product is being rebuilt and the brand needs to travel into the UI.",
     ],
+    capabilityGroups: [
+      { title: "Brand foundation", summary: "The core look and voice everything else is built on." },
+      { title: "Design system", summary: "Reusable parts so every new page looks like it belongs." },
+      { title: "Launch & handoff", summary: "Campaign-ready assets and everything your team needs next." },
+    ],
     capabilities: [
       {
         title: "Visual identity foundation",
         body:
           "Define color, type, spacing, logo usage, graphic direction, and visual rules that can survive beyond the first page.",
+        group: "Brand foundation",
+        icon: "palette",
+        visual: "identity",
+        highlights: ["Logo usage", "Colors", "Typography"],
+        tools: ["illustrator", "figma"],
       },
       {
         title: "Design tokens",
         body:
           "Translate brand decisions into reusable UI values for colors, typography, spacing, radii, rules, motion, and states.",
+        group: "Design system",
+        icon: "sliders",
+        visual: "tokens",
+        highlights: ["Colors", "Spacing", "Type scale"],
+        tools: ["figma"],
       },
       {
         title: "UI kit",
         body:
           "Create reusable buttons, form controls, cards, navigation patterns, content blocks, and responsive layout primitives.",
+        group: "Design system",
+        icon: "component",
+        visual: "ui-kit",
+        highlights: ["Buttons", "Forms", "Cards"],
+        tools: ["figma"],
       },
       {
         title: "Content voice",
         body:
           "Set headline style, CTA language, service labels, product copy patterns, and tone guardrails for future pages.",
+        group: "Brand foundation",
+        icon: "quote",
+        visual: "voice",
+        highlights: ["Headlines", "CTAs", "Tone rules"],
       },
       {
         title: "Launch asset system",
         body:
           "Design reusable social post formats, announcement graphics, thumbnail structures, banners, and campaign visuals.",
+        group: "Launch & handoff",
+        icon: "megaphone",
+        visual: "social-templates",
+        highlights: ["Social posts", "Banners", "Thumbnails"],
+        tools: ["instagram", "linkedin", "facebook"],
       },
       {
         title: "Pitch and presentation support",
         body:
           "Prepare deck visual direction, slides, diagrams, and narrative assets that match the product and website.",
+        group: "Launch & handoff",
+        icon: "presentation",
+        visual: "slide",
+        highlights: ["Deck design", "Diagrams", "Story flow"],
+        tools: ["figma"],
       },
       {
         title: "Graphic design in Figma",
         body:
           "Create posters, campaign layouts, social graphics, launch visuals, and editable templates for the team.",
+        group: "Design system",
+        icon: "pen-tool",
+        visual: "figma-canvas",
+        highlights: ["Posters", "Social graphics", "Templates"],
+        tools: ["figma"],
       },
       {
         title: "Brand handoff",
         body:
           "Package the rules, assets, templates, and usage notes so the team can keep producing coherent work.",
+        group: "Launch & handoff",
+        icon: "folder-open",
+        visual: "brand-package",
+        highlights: ["Guidelines", "Asset files", "Templates"],
+        tools: ["figma", "drive"],
       },
     ],
     deliverables: [
@@ -853,46 +1027,89 @@ export const services = [
       "A founder needs SEO foundations before publishing more content.",
       "A team needs campaign assets and reporting that connect to the website.",
     ],
+    capabilityGroups: [
+      { title: "Message & positioning", summary: "Say clearly what you sell, who it is for, and why it matters." },
+      { title: "Search visibility (SEO)", summary: "Get found by customers who are already searching." },
+      { title: "Campaigns & reporting", summary: "Plan campaigns, run ads, and see what is working." },
+    ],
     capabilities: [
       {
         title: "Positioning and offer copy",
         body:
           "Clarify what the company sells, who it is for, why it matters now, and what the page should ask visitors to do.",
+        group: "Message & positioning",
+        icon: "target",
+        visual: "positioning",
+        highlights: ["Who it's for", "The offer", "Why now"],
       },
       {
         title: "Landing page messaging",
         body:
           "Write and structure page sections, CTAs, proof areas, FAQs, and objections around a practical conversion path.",
+        group: "Message & positioning",
+        icon: "panels",
+        visual: "landing-wireframe",
+        highlights: ["Page sections", "CTAs", "FAQs"],
       },
       {
         title: "Keyword and intent research",
         body:
           "Identify search themes, buyer intent, page opportunities, content gaps, and terms that match the actual service or product.",
+        group: "Search visibility (SEO)",
+        icon: "search",
+        visual: "keywords",
+        highlights: ["Search themes", "Buyer intent", "Content gaps"],
+        tools: ["google"],
       },
       {
         title: "Technical and on-page SEO",
         body:
           "Improve metadata, headings, internal links, crawlability, schema opportunities, page speed habits, and indexable content.",
+        group: "Search visibility (SEO)",
+        icon: "gauge",
+        visual: "seo-audit",
+        highlights: ["Metadata", "Site speed", "Internal links"],
+        tools: ["google", "chrome"],
       },
       {
         title: "Local SEO",
         body:
           "Support service-area pages, local search profiles, location content, review signals, and practical local visibility improvements.",
+        group: "Search visibility (SEO)",
+        icon: "map-pin",
+        visual: "local",
+        highlights: ["Google profile", "Location pages", "Reviews"],
+        tools: ["google-maps"],
       },
       {
         title: "Campaign planning",
         body:
           "Shape campaign angles, landing pages, creative variants, email or social hooks, and channel-specific content needs.",
+        group: "Campaigns & reporting",
+        icon: "calendar",
+        visual: "campaign-board",
+        highlights: ["Campaign angles", "Creative variants", "Channels"],
+        tools: ["gmail", "instagram"],
       },
       {
         title: "Meta ads and paid social support",
         body:
           "Prepare campaign creative, landing page alignment, audience notes, and reporting structure for social advertising.",
+        group: "Campaigns & reporting",
+        icon: "pointer",
+        visual: "meta-ad",
+        highlights: ["Ad creative", "Audiences", "Landing match"],
+        tools: ["meta", "facebook", "instagram"],
       },
       {
         title: "Reporting and next actions",
         body:
           "Create a simple reporting view that separates traffic, leads, ranking movement, and content work that should happen next.",
+        group: "Campaigns & reporting",
+        icon: "chart",
+        visual: "report",
+        highlights: ["Traffic", "Leads", "Rankings"],
+        tools: ["google-analytics"],
       },
     ],
     deliverables: [

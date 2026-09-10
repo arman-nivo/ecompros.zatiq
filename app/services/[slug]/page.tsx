@@ -5,6 +5,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import ScrollCinematics from "@/components/motion/ScrollCinematics";
+import ServiceCapabilities from "@/components/services/ServiceCapabilities";
 import Button from "@/components/ui/Button";
 import { brand } from "@/lib/brand";
 import { portfolioProjects, type PortfolioProject } from "@/lib/portfolio";
@@ -170,23 +171,11 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
           </aside>
 
           <div className="service-detail-stack__body">
-            <section className="service-detail-panel" aria-labelledby="service-capabilities-title">
-              <h3 id="service-capabilities-title">Capabilities</h3>
-              <div className="service-capability-grid">
-                {service.capabilities.map((capability, index) => (
-                  <article
-                    className="service-capability"
-                    data-cinematic="rise"
-                    data-cinematic-delay={Math.min(index + 1, 6)}
-                    key={capability.title}
-                  >
-                    <span>{String(index + 1).padStart(2, "0")}</span>
-                    <h4>{capability.title}</h4>
-                    <p>{capability.body}</p>
-                  </article>
-                ))}
-              </div>
-            </section>
+            <ServiceCapabilities
+              capabilities={service.capabilities}
+              groups={service.capabilityGroups}
+              serviceTitle={service.title}
+            />
 
             <section className="service-detail-panel" aria-labelledby="service-deliverables-title">
               <h3 id="service-deliverables-title">Deliverables</h3>
