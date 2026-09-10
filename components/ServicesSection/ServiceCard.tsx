@@ -1,6 +1,8 @@
 "use client";
 
 import type { CSSProperties } from "react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import type { ServiceItem } from "./data";
 import { useTilt } from "./useTilt";
 
@@ -17,13 +19,15 @@ const initialGlareStyle: CardStyle = {
 };
 
 export default function ServiceCard({ item }: { item: ServiceItem }) {
-  const ref = useTilt<HTMLDivElement>(8);
+  const ref = useTilt<HTMLAnchorElement>(8);
   const Icon = item.icon;
 
   return (
-    <div
+    <Link
       ref={ref}
-      className="service-card group relative flex items-center gap-3 rounded-[1.35rem] border border-[var(--color-rule)] bg-[var(--color-paper)] p-3.5 shadow-[0_1px_2px_rgba(17,17,18,0.04)] transition-all duration-500 ease-out will-change-transform hover:shadow-[0_18px_40px_-16px_rgba(76,29,149,0.35)] dark:border-[var(--color-rule)]"
+      href="/booking"
+      aria-label={`${item.label} — book a call`}
+      className="service-card group relative flex items-center gap-3 rounded-[1.35rem] border border-[var(--color-rule)] bg-[var(--color-paper)] p-3.5 shadow-[0_1px_2px_rgba(17,17,18,0.04)] outline-none transition-all duration-500 ease-out will-change-transform hover:shadow-[0_18px_40px_-16px_rgba(76,29,149,0.35)] focus-visible:ring-2 focus-visible:ring-[var(--color-brand-accent)] dark:border-[var(--color-rule)]"
       style={initialGlareStyle}
     >
       <span
@@ -36,6 +40,12 @@ export default function ServiceCard({ item }: { item: ServiceItem }) {
       <span className="relative z-[1] flex-1 text-[13.5px] font-medium leading-[1.3] text-[var(--color-ink)]">
         {item.label}
       </span>
-    </div>
+      <ArrowRight
+        aria-hidden="true"
+        size={17}
+        strokeWidth={1.75}
+        className="relative z-[1] shrink-0 -translate-x-2 text-[var(--color-brand-accent)] opacity-0 transition-all duration-300 ease-out group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100"
+      />
+    </Link>
   );
 }
