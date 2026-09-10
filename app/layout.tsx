@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Manrope, Plus_Jakarta_Sans } from "next/font/google";
 
 import CustomCursor from "@/components/effects/CustomCursor";
+import FloatingContact from "@/components/layout/FloatingContact";
 import SiteFooter from "@/components/layout/SiteFooter";
 import SiteHeader from "@/components/layout/SiteHeader";
 import { brand } from "@/lib/brand";
@@ -110,6 +111,7 @@ export default function RootLayout({
           {children}
         </main>
         <SiteFooter />
+        <FloatingContact />
       </body>
     </html>
   );

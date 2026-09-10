@@ -5268,3 +5268,60 @@ html[data-theme="light"] .client-marquee__image {
     transform: rotate(180deg);
   }
 }
+.floating-contact {
+  position: fixed;
+  inset-block-end: max(1.25rem, env(safe-area-inset-bottom));
+  inset-inline-end: max(1.25rem, env(safe-area-inset-right));
+  z-index: 38;
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  padding: 0 1.25rem 0 1rem;
+  box-shadow: 0 1rem 2rem -1rem var(--color-brand-accent), var(--shadow-lift);
+  transition: transform var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+.floating-contact:hover,
+.floating-contact:focus-visible {
+  background: var(--primary-hover);
+  color: oklch(12% 0.012 64);
+  transform: translateY(-0.125rem);
+}
+
+.floating-contact:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.floating-contact__icon {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 40rem) {
+  .floating-contact {
+    min-height: 2.75rem;
+    inset-block-end: max(1rem, env(safe-area-inset-bottom));
+    inset-inline-end: max(1rem, env(safe-area-inset-right));
+    padding: 0 1rem 0 0.85rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-contact {
+    transition: none;
+  }
+
+  .floating-contact:hover,
+  .floating-contact:focus-visible {
+    transform: none;
+  }
+}
