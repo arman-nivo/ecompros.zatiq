@@ -30,14 +30,6 @@ const serviceIcons: Partial<Record<ServiceSlug, ServiceIcon>> = {
   "motion-video-design": IconMovie,
 };
 
-const serviceImages: Partial<Record<ServiceSlug, string>> = {
-  "brand-ready-systems": "/services/Brand-ready-system.jpeg",
-  "cybersecurity-helper": "/services/cybersecurity-helper.jpeg",
-  "e-commerce-virtual-assistant": "/services/virtual-assistant.jpeg",
-  "marketing-branding-seo": "/services/marketing-branding-seo.jpeg",
-  "motion-video-design": "/services/motion-video-design.jpeg",
-};
-
 export default function ServicesGrid() {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeService = services[activeIndex];
@@ -83,8 +75,8 @@ export default function ServicesGrid() {
             fill
             priority={activeIndex === 0}
             sizes="(max-width: 639px) 100vw, 50vw"
-            src={serviceImages[activeService.slug] ?? "/services/virtual-assistant.jpeg"}
-            alt={`${activeService.title} service preview`}
+            src={activeService.image.src}
+            alt={activeService.image.alt}
           />
         </div>
       </div>

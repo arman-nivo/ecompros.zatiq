@@ -25,6 +25,11 @@ export type ServiceStep = {
   title: string;
 };
 
+export type ServiceImage = {
+  alt: string;
+  src: string;
+};
+
 export type ServiceContent = {
   audienceFit: readonly string[];
   bookingLabel: string;
@@ -33,6 +38,7 @@ export type ServiceContent = {
   faqs: readonly ServiceFAQ[];
   handoff: string;
   homeDescription: string;
+  image: ServiceImage;
   meta: {
     description: string;
     title: string;
@@ -327,6 +333,10 @@ export const services = [
       "Reliable day-to-day ecommerce support for catalog updates, marketplace operations, order follow-up, customer care, and store administration.",
     homeDescription:
       "Practical ecommerce support that keeps products, orders, customers, and daily store operations moving.",
+    image: {
+      src: "/services/virtual-assistant.jpeg",
+      alt: "Ecommerce virtual assistant at a desk handling store setup, product uploads, order fulfillment, SEO, and customer support",
+    },
     meta: {
       title: "E-commerce Virtual Assistant |EcomPros Services",
       description:
@@ -440,6 +450,10 @@ export const services = [
       "Product explainers, launch loops, podcast edits, motion graphics, AI-assisted commercials, and social-ready video packages.",
     homeDescription:
       "Launch loops, product explainers, and short motion systems that help a young company show momentum without overexplaining.",
+    image: {
+      src: "/services/motion-video-design.jpeg",
+      alt: "3D character being rigged and animated in motion design software on a laptop",
+    },
     meta: {
       title: "Motion Video Design |EcomPros Services",
       description:
@@ -568,6 +582,10 @@ export const services = [
       "Security UX, trust surfaces, access-control review, checklist systems, policy pages, and practical security support for small teams.",
     homeDescription:
       "Practical security surfaces, checklists, and helper tooling that make trust work easier to understand and maintain.",
+    image: {
+      src: "/services/cybersecurity-helper.jpeg",
+      alt: "Security specialist reviewing code and terminal output across multiple monitors",
+    },
     meta: {
       title: "Cybersecurity Helper |EcomPros Services",
       description:
@@ -692,6 +710,10 @@ export const services = [
       "Visual identity foundations, design tokens, UI kits, content voice, social templates, pitch material, and reusable launch assets.",
     homeDescription:
       "Shared type, color, UI, and content decisions that keep the website, product, and launch assets speaking the same language.",
+    image: {
+      src: "/services/Brand-ready-system.jpeg",
+      alt: "Chalkboard brand map linking a brand to growth, sales, customers, loyalty, and success",
+    },
     meta: {
       title: "Brand-Ready Systems |EcomPros Services",
       description:
@@ -816,6 +838,10 @@ export const services = [
       "Positioning, landing page messaging, SEO research, on-page optimization, local SEO, paid social support, and campaign-ready content direction.",
     homeDescription:
       "Positioning, messaging, visual identity, SEO, and campaign systems that help a young company get found and understood.",
+    image: {
+      src: "/services/marketing-branding-seo.jpeg",
+      alt: "Team reviewing marketing performance charts and analytics reports around a table",
+    },
     meta: {
       title: "Marketing, Branding and SEO |EcomPros Services",
       description:

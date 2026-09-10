@@ -1,5 +1,6 @@
 import { ArrowRight, MoveRight } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import ScrollCinematics from "@/components/motion/ScrollCinematics";
@@ -104,6 +105,14 @@ export default function ServicesPage() {
               >
                 <span className="services-index-card__count">
                   {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="services-index-card__media">
+                  <Image
+                    fill
+                    sizes="(min-width: 60rem) 16rem, 100vw"
+                    src={service.image.src}
+                    alt={service.image.alt}
+                  />
                 </span>
                 <span className="services-index-card__body">
                   <span className="services-index-card__title">{service.title}</span>

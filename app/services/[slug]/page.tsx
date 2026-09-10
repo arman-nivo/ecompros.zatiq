@@ -1,5 +1,6 @@
 import { ArrowLeft, ArrowRight, CheckCircle2, MoveRight } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -51,10 +52,8 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
       siteName: brand.name,
       images: [
         {
-          url: "/assets/home/EcomPros-hero-command.png",
-          width: 1672,
-          height: 941,
-          alt: "Ecom ProDesk digital product interface system preview",
+          url: service.image.src,
+          alt: service.image.alt,
         },
       ],
       locale: "en_US",
@@ -64,7 +63,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
       card: "summary_large_image",
       title: service.meta.title,
       description: service.meta.description,
-      images: ["/assets/home/EcomPros-hero-command.png"],
+      images: [service.image.src],
     },
   };
 }
@@ -114,6 +113,16 @@ export default async function ServiceDetailPage({ params }: ServicePageProps) {
               </Button>
             </div>
           </div>
+
+          <figure className="service-detail-hero__media" data-cinematic="rise" data-cinematic-delay="2">
+            <Image
+              fill
+              preload
+              sizes="(min-width: 90rem) 88rem, 100vw"
+              src={service.image.src}
+              alt={service.image.alt}
+            />
+          </figure>
         </div>
       </section>
 
