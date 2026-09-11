@@ -1,6 +1,8 @@
 /* ---------- Capabilities section ---------- */
 
 .capabilities {
+  display: grid;
+  min-width: 0;
   gap: var(--space-xl);
 }
 
@@ -146,7 +148,7 @@
   font-weight: 700;
 }
 
-.capability-area__head h4 {
+.capability-area__head h3 {
   margin: 0;
   color: var(--color-ink);
   font-family: var(--font-display);
@@ -221,7 +223,7 @@
   font-size: var(--text-xs);
 }
 
-.capability-card h5 {
+.capability-card h4 {
   margin: 0;
   color: var(--color-ink);
   font-family: var(--font-display);

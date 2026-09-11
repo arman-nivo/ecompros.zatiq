@@ -42,6 +42,12 @@ export type ServiceImage = {
 
 export type ServiceContent = {
   audienceFit: readonly string[];
+  /** Secondary photo used in the "What you get" section. */
+  detailImage?: ServiceImage;
+  /** Benefit-led headline for the service hero. Falls back to the title. */
+  headline?: string;
+  /** Three short outcomes listed in the service hero. */
+  heroPoints?: readonly string[];
   bookingLabel: string;
   capabilities: readonly ServiceCapability[];
   capabilityGroups?: readonly ServiceCapabilityGroup[];
@@ -86,7 +92,7 @@ export const services = [
   //   homeDescription:
   //     "Marketing pages, product sites, dashboards, and responsive front-end builds shaped around one clear action.",
   //   meta: {
-  //     title: "Web Design and Development |EcomPros Services",
+  //     title: "Web Design and Development | EcomPros Services",
   //     description:
   //       "Ecom ProDesk web design and development services for startup websites, web apps, dashboards, CMS content systems, SEO foundations, analytics, DevOps, and launch support.",
   //   },
@@ -189,7 +195,7 @@ export const services = [
   //   relatedPortfolioSlugs: ["tapcon", "solarstock", "oneplatemeal"],
   //   faqs: [
   //     {
-  //       question: "CanEcomPros handle both design and development?",
+  //       question: "Can EcomPros handle both design and development?",
   //       answer:
   //         "Yes. The work is planned as one product surface, so the visual direction, responsive behavior, content structure, and implementation stay connected.",
   //     },
@@ -215,7 +221,7 @@ export const services = [
   //   homeDescription:
   //     "Interface logic, architecture-facing UX, and implementation support for products that need to feel coherent early.",
   //   meta: {
-  //     title: "Software Design and Development |EcomPros Services",
+  //     title: "Software Design and Development | EcomPros Services",
   //     description:
   //       "Software design and development services for product UX, application architecture, backend systems, dashboards, APIs, databases, authentication, permissions, and mobile app planning.",
   //   },
@@ -319,7 +325,7 @@ export const services = [
   //   relatedPortfolioSlugs: ["tapcon", "solarstock", "oneplatemeal"],
   //   faqs: [
   //     {
-  //       question: "CanEcomPros build an MVP from a rough idea?",
+  //       question: "Can EcomPros build an MVP from a rough idea?",
   //       answer:
   //         "Yes, as long as the first release can be framed around a clear workflow, user role, or operational job.",
   //     },
@@ -344,25 +350,32 @@ export const services = [
       "Reliable day-to-day ecommerce support for catalog updates, marketplace operations, order follow-up, customer care, and store administration.",
     homeDescription:
       "Practical ecommerce support that keeps products, orders, customers, and daily store operations moving.",
+    headline: "Hand off the daily store work. Keep full visibility.",
+    heroPoints: ["Product uploads and listing cleanup", "Order tracking and customer replies", "A weekly summary of everything done"],
     image: {
-      src: "/services/virtual-assistant.jpeg",
-      alt: "Ecommerce virtual assistant at a desk handling store setup, product uploads, order fulfillment, SEO, and customer support",
+      src: "/services/photos/va-hero.jpg",
+      alt: "Ecommerce virtual assistant managing product listings and orders at a tidy desk with shipping boxes",
+    },
+    detailImage: {
+      src: "/services/photos/va-detail.jpg",
+      alt: "Order being packed into a kraft shipping box with an orders dashboard in the background",
     },
     meta: {
-      title: "E-commerce Virtual Assistant |EcomPros Services",
+      title: "E-commerce Virtual Assistant | EcomPros Services",
       description:
         "E-commerce virtual assistant services for product uploads, catalog management, marketplace support, order tracking, customer care, and store operations.",
     },
     audienceFit: [
       "A store owner needs consistent help maintaining products and orders.",
       "A growing catalog needs clean listings, images, variants, and inventory updates.",
-      "A marketplace team needs support with customer messages, order status, and daily admin.",
+      "Customer emails, DMs, reviews, and returns are piling up faster than you can answer.",
       "A founder wants to hand off repeatable ecommerce tasks without losing visibility.",
     ],
     capabilityGroups: [
       { title: "Products & catalog", summary: "Accurate, well-presented products your customers can trust." },
-      { title: "Orders & customers", summary: "Every order tracked and every customer answered." },
-      { title: "Marketplace & store admin", summary: "The daily platform work that keeps your store running." },
+      { title: "Orders & shipping", summary: "Every order tracked from checkout to doorstep, and back." },
+      { title: "Customer care", summary: "Every customer answered, every review handled." },
+      { title: "Marketplace & back office", summary: "The platform and admin work that keeps your store running." },
     ],
     capabilities: [
       {
@@ -386,52 +399,113 @@ export const services = [
         tools: ["shopify", "sheets"],
       },
       {
-        title: "Marketplace operations",
+        title: "Product research and price monitoring",
         body:
-          "Support listings, marketplace updates, order checks, message handling, and routine platform administration.",
-        group: "Marketplace & store admin",
-        icon: "store",
-        visual: "marketplaces",
-        highlights: ["Listings", "Order checks", "Messages"],
-        tools: ["amazon", "etsy", "walmart"],
+          "Find trending products and reliable suppliers, and keep an eye on competitor prices and promotions so you can react quickly.",
+        group: "Products & catalog",
+        icon: "search",
+        visual: "price-watch",
+        highlights: ["Trending products", "Supplier shortlists", "Competitor prices"],
+        tools: ["amazon", "google", "sheets"],
       },
       {
         title: "Order and fulfillment follow-up",
         body:
           "Track order status, flag exceptions, coordinate follow-up, and keep customers informed when something changes.",
-        group: "Orders & customers",
+        group: "Orders & shipping",
         icon: "truck",
         visual: "order-timeline",
         highlights: ["Status tracking", "Exceptions flagged", "Customer updates"],
         tools: ["shopify", "amazon"],
       },
       {
+        title: "Returns, refunds, and exchanges",
+        body:
+          "Process return requests, arrange labels, confirm items are received, and issue refunds or exchanges by your rules.",
+        group: "Orders & shipping",
+        icon: "repeat",
+        visual: "returns",
+        highlights: ["Return labels", "Refunds", "Exchanges"],
+        tools: ["shopify", "amazon", "gmail"],
+      },
+      {
+        title: "Supplier and dropship coordination",
+        body:
+          "Place and confirm purchase orders, chase delivery dates, and add tracking to dropship orders so nothing stalls.",
+        group: "Orders & shipping",
+        icon: "package",
+        visual: "suppliers",
+        highlights: ["Purchase orders", "Supplier follow-up", "Dropship tracking"],
+        tools: ["sheets", "gmail", "whatsapp"],
+      },
+      {
         title: "Customer care",
         body:
           "Handle repeatable customer questions with a clear tone, useful context, and escalation notes for the store owner.",
-        group: "Orders & customers",
+        group: "Customer care",
         icon: "messages",
         visual: "chat",
         highlights: ["Clear replies", "Escalation notes", "Consistent tone"],
         tools: ["gmail", "whatsapp", "messenger"],
       },
       {
+        title: "Reviews and feedback",
+        body:
+          "Reply to product and store reviews, pass recurring complaints to your team, and ask happy customers for a review.",
+        group: "Customer care",
+        icon: "quote",
+        visual: "reviews",
+        highlights: ["Review replies", "Feedback notes", "Review requests"],
+        tools: ["shopify", "amazon", "google-maps"],
+      },
+      {
+        title: "Social inbox and comments",
+        body:
+          "Answer product questions in DMs, keep comment sections tidy, and route sales leads or complaints to the right person.",
+        group: "Customer care",
+        icon: "users-round",
+        visual: "inbox",
+        highlights: ["DM replies", "Comment moderation", "Lead routing"],
+        tools: ["instagram", "facebook", "tiktok"],
+      },
+      {
+        title: "Marketplace operations",
+        body:
+          "Support listings, marketplace updates, order checks, message handling, account health, and routine platform administration.",
+        group: "Marketplace & back office",
+        icon: "store",
+        visual: "marketplaces",
+        highlights: ["Listings", "Account health", "Messages"],
+        tools: ["amazon", "etsy", "walmart"],
+      },
+      {
         title: "Store administration",
         body:
           "Support promotions, collections, content updates, reporting routines, and the small operational tasks that pile up.",
-        group: "Marketplace & store admin",
+        group: "Marketplace & back office",
         icon: "clipboard-check",
         visual: "admin-tasks",
         highlights: ["Promotions", "Collections", "Weekly reports"],
         tools: ["shopify", "sheets"],
       },
+      {
+        title: "Data entry and bookkeeping support",
+        body:
+          "Keep order, product, and customer data organised, and log invoices, receipts, and payouts ready for your accountant.",
+        group: "Marketplace & back office",
+        icon: "list-checks",
+        visual: "ledger",
+        highlights: ["Data entry", "Invoices & receipts", "Payout checks"],
+        tools: ["sheets", "drive", "gmail"],
+      },
     ],
     deliverables: [
       "Product uploads and listing cleanup",
       "Catalog, collection, and inventory updates",
-      "Marketplace and store administration",
-      "Order tracking and fulfillment follow-up",
-      "Customer support responses and escalation notes",
+      "Order tracking, returns, and refunds handled",
+      "Customer, review, and social inbox replies",
+      "Supplier, dropship, and marketplace follow-up",
+      "Clean store data and bookkeeping records",
       "Weekly task summary and operational handoff",
     ],
     process: [
@@ -461,9 +535,11 @@ export const services = [
       "Amazon and marketplaces",
       "Product catalogs",
       "Order management",
+      "Returns and refunds",
       "Customer support",
+      "Social inboxes",
       "Spreadsheets",
-      "Inventory updates",
+      "Bookkeeping records",
       "Weekly reporting",
     ],
     handoff:
@@ -485,6 +561,16 @@ export const services = [
         answer:
           "You receive a simple task summary with completed updates, open questions, exceptions, and the next priorities.",
       },
+      {
+        question: "Can the assistant handle returns, reviews, and social messages too?",
+        answer:
+          "Yes. Returns and refunds, review replies, and social inbox or comment management can all be part of the routine, following the rules and tone you set.",
+      },
+      {
+        question: "Which plan covers the virtual assistant?",
+        answer:
+          "Virtual assistant work is part of the Operations plan. You can add creative, marketing, or tech support later by moving to a larger plan.",
+      },
     ],
   },
   {
@@ -496,12 +582,18 @@ export const services = [
       "Product explainers, launch loops, podcast edits, motion graphics, AI-assisted commercials, and social-ready video packages.",
     homeDescription:
       "Launch loops, product explainers, and short motion systems that help a young company show momentum without overexplaining.",
+    headline: "Videos that explain your product in seconds.",
+    heroPoints: ["Explainers, launch loops and social cuts", "Captions that read well on mobile", "Every size exported and ready to post"],
     image: {
-      src: "/services/motion-video-design.jpeg",
-      alt: "3D character being rigged and animated in motion design software on a laptop",
+      src: "/services/photos/motion-hero.jpg",
+      alt: "Video editor working on a motion timeline across an ultrawide and a vertical monitor",
+    },
+    detailImage: {
+      src: "/services/photos/motion-detail.jpg",
+      alt: "Vertical product video playing on a phone with widescreen and square versions on a laptop behind",
     },
     meta: {
-      title: "Motion Video Design |EcomPros Services",
+      title: "Motion Video Design | EcomPros Services",
       description:
         "Motion video design services for product explainers, launch loops, podcast editing, captions, motion graphics, social cutdowns, and campaign video finishing.",
     },
@@ -646,7 +738,7 @@ export const services = [
     ],
     faqs: [
       {
-        question: "CanEcomPros edit existing footage?",
+        question: "Can EcomPros edit existing footage?",
         answer:
           "Yes. Existing product captures, interviews, podcasts, commercials, and social clips can be shaped into finished edits.",
       },
@@ -671,12 +763,18 @@ export const services = [
       "Security UX, trust surfaces, access-control review, checklist systems, policy pages, and practical security support for small teams.",
     homeDescription:
       "Practical security surfaces, checklists, and helper tooling that make trust work easier to understand and maintain.",
+    headline: "Security your customers can see and trust.",
+    heroPoints: ["Logins, roles and access reviewed", "Practical checklists your team keeps using", "Clear privacy and trust pages"],
     image: {
-      src: "/services/cybersecurity-helper.jpeg",
-      alt: "Security specialist reviewing code and terminal output across multiple monitors",
+      src: "/services/photos/security-hero.jpg",
+      alt: "Security specialist reviewing a two-step sign-in screen and a security checklist dashboard",
+    },
+    detailImage: {
+      src: "/services/photos/security-detail.jpg",
+      alt: "Team reviewing a security checklist and an access permissions chart together",
     },
     meta: {
-      title: "Cybersecurity Helper |EcomPros Services",
+      title: "Cybersecurity Helper | EcomPros Services",
       description:
         "Cybersecurity helper services for startup trust surfaces, security UX, authentication review, permission models, checklist systems, policy pages, and incident-ready documentation.",
     },
@@ -825,7 +923,7 @@ export const services = [
           "Yes. It often works best when paired with product development, because auth, roles, admin tooling, and launch checklists can be improved during the build.",
       },
       {
-        question: "CanEcomPros write policy pages?",
+        question: "Can EcomPros write policy pages?",
         answer:
           "Ecom ProDesk can structure and draft readable web content for trust and policy surfaces. Legal review should still happen where legal obligations apply.",
       },
@@ -840,12 +938,18 @@ export const services = [
       "Visual identity foundations, design tokens, UI kits, content voice, social templates, pitch material, and reusable launch assets.",
     homeDescription:
       "Shared type, color, UI, and content decisions that keep the website, product, and launch assets speaking the same language.",
+    headline: "One brand system your whole team can use.",
+    heroPoints: ["Logo, color and type rules", "A reusable UI kit and templates", "Launch-ready social assets"],
     image: {
-      src: "/services/Brand-ready-system.jpeg",
-      alt: "Chalkboard brand map linking a brand to growth, sales, customers, loyalty, and success",
+      src: "/services/photos/brand-hero.jpg",
+      alt: "Brand identity flat lay with color swatches, typography cards, packaging and a logo sketch on a tablet",
+    },
+    detailImage: {
+      src: "/services/photos/brand-detail.jpg",
+      alt: "Designer desk with a UI component kit on screen and social templates pinned beside it",
     },
     meta: {
-      title: "Brand-Ready Systems |EcomPros Services",
+      title: "Brand-Ready Systems | EcomPros Services",
       description:
         "Brand-ready systems for startups including visual identity foundations, design tokens, UI kits, content voice, launch assets, presentation templates, and social creative systems.",
     },
@@ -997,7 +1101,7 @@ export const services = [
           "Yes. The strongest version connects directly to website and product implementation so the system is not left as a separate design file.",
       },
       {
-        question: "CanEcomPros create social templates?",
+        question: "Can EcomPros create social templates?",
         answer:
           "Yes. Social posts, thumbnails, campaign visuals, and editable Figma templates can be included in the brand-ready system.",
       },
@@ -1012,12 +1116,18 @@ export const services = [
       "Positioning, landing page messaging, SEO research, on-page optimization, local SEO, paid social support, and campaign-ready content direction.",
     homeDescription:
       "Positioning, messaging, visual identity, SEO, and campaign systems that help a young company get found and understood.",
+    headline: "Get found, get clicks, and turn visitors into customers.",
+    heroPoints: ["Clear positioning and landing copy", "Keyword research and on-page SEO", "Campaigns, ads and simple reporting"],
     image: {
-      src: "/services/marketing-branding-seo.jpeg",
-      alt: "Team reviewing marketing performance charts and analytics reports around a table",
+      src: "/services/photos/marketing-hero.jpg",
+      alt: "Marketer reviewing a growth dashboard on a laptop and a social ad on a phone",
+    },
+    detailImage: {
+      src: "/services/photos/marketing-detail.jpg",
+      alt: "Laptop showing local search results with map pins next to a phone showing a five-star business profile",
     },
     meta: {
-      title: "Marketing, Branding and SEO |EcomPros Services",
+      title: "Marketing, Branding and SEO | EcomPros Services",
       description:
         "Marketing, branding, and SEO services for startup positioning, landing page messaging, keyword research, on-page SEO, local SEO, paid social, reporting, and campaign content.",
     },
@@ -1170,7 +1280,7 @@ export const services = [
           "Yes. SEO foundations are strongest when metadata, headings, content structure, performance, and landing page copy are handled during the build.",
       },
       {
-        question: "CanEcomPros support local SEO?",
+        question: "Can EcomPros support local SEO?",
         answer:
           "Yes. Local service pages, business profile direction, review signals, and location content can be included when local search matters.",
       },
@@ -1190,86 +1300,89 @@ export const serviceBookingOptions = serviceCatalog.map((service) => service.boo
 
 export const serviceDecisionGuides: ServiceDecisionGuide[] = [
   {
-    need: "I need the company to look credible before outreach.",
+    need: "My store's daily work is piling up",
     note:
-      "Start with the web service, then add brand-ready systems if the identity and launch assets need to be cleaned up at the same time.",
-    serviceSlugs: ["web-design-development", "brand-ready-systems"],
+      "Hand product uploads, orders, customer messages, and store admin to a dedicated ecommerce assistant who reports back every week.",
+    serviceSlugs: ["e-commerce-virtual-assistant"],
   },
   {
-    need: "I need a working product, not just a page.",
+    need: "I need more traffic and sales",
     note:
-      "Start with software design and development. Add web design if the public site or launch funnel should ship with it.",
-    serviceSlugs: ["software-product-development", "web-design-development"],
+      "Start with positioning, SEO, and campaigns. Add video when your ads and product pages need stronger creative.",
+    serviceSlugs: ["marketing-branding-seo", "motion-video-design"],
   },
   {
-    need: "I need people to understand the product quickly.",
+    need: "My brand looks different everywhere",
     note:
-      "Pair web design with motion video design so the website, explainer, and hero loop all explain the same thing.",
-    serviceSlugs: ["web-design-development", "motion-video-design"],
+      "Set one clear system for logo, color, type, and templates so every page, post, and package looks like the same company.",
+    serviceSlugs: ["brand-ready-systems"],
   },
   {
-    need: "I need traffic and better lead quality.",
+    need: "Customers don't get my product",
     note:
-      "Start with marketing, branding and SEO. Add web development when the page structure or implementation is holding the campaign back.",
-    serviceSlugs: ["marketing-branding-seo", "web-design-development"],
+      "Short explainers and captioned social cuts show the value quickly, and clearer landing copy keeps the message consistent.",
+    serviceSlugs: ["motion-video-design", "marketing-branding-seo"],
   },
   {
-    need: "I need to improve trust before sales calls.",
+    need: "I'm worried about account security",
     note:
-      "Use cybersecurity helper to clarify security UX, roles, checklists, and trust surfaces, then connect it to the web or software scope.",
-    serviceSlugs: ["cybersecurity-helper", "software-product-development"],
+      "Review logins, roles, and access for everyone who touches the store, then keep a simple checklist the team can follow.",
+    serviceSlugs: ["cybersecurity-helper", "e-commerce-virtual-assistant"],
+  },
+  {
+    need: "I'm launching a new store or product",
+    note:
+      "Brand system, launch video, and campaign plan built together so the launch looks and sounds like one company.",
+    serviceSlugs: ["brand-ready-systems", "motion-video-design", "marketing-branding-seo"],
   },
 ];
 
 export const combinedEngagements: CombinedEngagement[] = [
   {
-    title: "Launch system",
+    title: "Run & grow",
     body:
-      "Website, brand-ready system, launch video, and SEO foundations handled together so the public release feels like one product.",
-    serviceSlugs: [
-      "web-design-development",
-      "brand-ready-systems",
-      "motion-video-design",
-      "marketing-branding-seo",
-    ],
+      "Daily store management plus steady traffic growth: listings, orders, customer care, SEO, and campaigns handled by one team.",
+    serviceSlugs: ["e-commerce-virtual-assistant", "marketing-branding-seo"],
   },
   {
-    title: "Product build",
+    title: "Launch kit",
     body:
-      "Software architecture, product UI, web surface, deployment notes, and security helper work for teams shipping an MVP or internal platform.",
-    serviceSlugs: [
-      "software-product-development",
-      "web-design-development",
-      "cybersecurity-helper",
-    ],
+      "Brand system, launch video, and campaign plan created together so your launch feels polished from the first post.",
+    serviceSlugs: ["brand-ready-systems", "motion-video-design", "marketing-branding-seo"],
   },
   {
-    title: "Growth repair",
+    title: "Safe operations",
     body:
-      "Positioning, landing page copy, SEO, campaign assets, and analytics cleanup for teams with traffic but weak conversion paths.",
-    serviceSlugs: [
-      "marketing-branding-seo",
-      "web-design-development",
-      "brand-ready-systems",
-    ],
+      "Safer logins, clear roles, and access checklists for the people running your store every day.",
+    serviceSlugs: ["cybersecurity-helper", "e-commerce-virtual-assistant"],
   },
 ];
 
 export const servicesFaqs: ServiceFAQ[] = [
   {
-    question: "Can one engagement include multiple services?",
+    question: "Can one engagement include more than one service?",
     answer:
-      "Yes. Most startup work combines at least two services, such as web plus brand, software plus security, or marketing plus SEO.",
+      "Yes. Many stores combine services, such as a virtual assistant with SEO, or a brand system with a launch video. We plan them as one track with one point of contact.",
   },
   {
-    question: "Do we need a finished brief before contactingEcomPros?",
+    question: "Do I need a detailed brief before contacting EcomPros?",
     answer:
-      "No. A rough product idea, current site, feature list, or launch problem is enough to start scoping the right service path.",
+      "No. Your store link, the platforms you sell on, and the problem you want solved are enough to start. We help shape the scope on the first call.",
   },
   {
-    question: "DoesEcomPros publish pricing on the site?",
+    question: "How much do your services cost?",
     answer:
-      "Not yet. Scope depends on the surface, content readiness, integrations, and launch deadline, so the booking flow starts with a project note.",
+      "See the pricing page for our plans. Custom scopes are quoted after a short call, once we understand your store, platforms, and goals.",
+  },
+  {
+    question: "Which platforms do you work with?",
+    answer:
+      "Shopify, Amazon, Etsy, Walmart and other marketplaces, plus Meta, Google, TikTok, and the tools your team already uses.",
+  },
+  {
+    question: "How do we stay in touch during the work?",
+    answer:
+      "By email or WhatsApp, with a clear summary of completed work, open questions, and the next priorities.",
   },
 ];
 

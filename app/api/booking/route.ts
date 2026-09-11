@@ -11,10 +11,14 @@ import { sendBookingInquiry } from "@/lib/mailer";
 type BookingPayload = {
   name?: unknown;
   email?: unknown;
+  phone?: unknown;
   company?: unknown;
+  website?: unknown;
   service?: unknown;
   duration?: unknown;
-  budget?: unknown;
+  platforms?: unknown;
+  orders?: unknown;
+  start?: unknown;
   message?: unknown;
 };
 
@@ -38,10 +42,14 @@ export async function POST(request: Request) {
   const data = {
     name: asString(payload.name),
     email: asString(payload.email),
+    phone: asString(payload.phone),
     company: asString(payload.company),
+    website: asString(payload.website),
     service: asString(payload.service),
     duration: asString(payload.duration),
-    budget: asString(payload.budget),
+    platforms: asString(payload.platforms),
+    orders: asString(payload.orders),
+    start: asString(payload.start),
     message: asString(payload.message),
   };
 

@@ -1,6 +1,7 @@
 import {
   IconBrandEtsy,
   IconBrandAmazon,
+  IconBrandFacebook,
   IconBrandFigma,
   IconBrandInstagram,
   IconBrandMeta,
@@ -22,10 +23,13 @@ import {
   MapPin,
   MousePointer2,
   Navigation,
+  Package,
   Phone,
   Play,
   Radar,
+  Receipt,
   Repeat,
+  RotateCcw,
   Scissors,
   Search,
   ShieldAlert,
@@ -995,6 +999,94 @@ const visuals: Record<string, () => ReactNode> = {
         <polyline points="0,36 25,33 50,35 75,26 100,28 125,19 150,21 175,10 200,6" />
       </svg>
       <Chip tone="accent"><ArrowRight /> Next: publish 2 new pages</Chip>
+    </Win>
+  ),
+
+  "price-watch": () => (
+    <Win badge={<Chip tone="warn">1 rival cheaper</Chip>} title="Price watch · Linen Shirt">
+      {(
+        [
+          ["You", "72%", "$48", "accent"],
+          ["Shop A", "64%", "$44", "bad"],
+          ["Shop B", "80%", "$52", "ok"],
+          ["Shop C", "76%", "$49", "ok"],
+        ] as const
+      ).map(([store, level, price, tone]) => (
+        <div className="cv-inv" key={store}>
+          <span className="cv-mono cv-text">{store}</span>
+          <span className={`cv-meter cv-meter--${tone}`}><i style={vars({ "--w": level })} /></span>
+          <Chip tone={tone}>{price}</Chip>
+        </div>
+      ))}
+    </Win>
+  ),
+
+  returns: () => (
+    <Win badge={<Chip tone="ok"><Check /> Refund issued</Chip>} title="Return #R-208">
+      <div className="cv-steps">
+        {(
+          [
+            ["Requested", "done"],
+            ["Label sent", "done"],
+            ["Received", "done"],
+            ["Refunded", "now"],
+          ] as const
+        ).map(([label, state]) => (
+          <div className={cx("cv-step", `cv-step--${state}`)} key={label}>
+            <span className="cv-step__dot">{state === "done" ? <Check /> : <RotateCcw />}</span>
+            <span>{label}</span>
+          </div>
+        ))}
+      </div>
+      <div className="cv-row cv-between cv-rule">
+        <span className="cv-muted">Linen Shirt · Size M → L</span>
+        <span className="cv-text">$48.00</span>
+      </div>
+    </Win>
+  ),
+
+  suppliers: () => (
+    <Win badge={<Chip tone="accent">1 awaiting reply</Chip>} title="Purchase orders">
+      <Task extra={<Chip>200 units</Chip>}>PO-118 confirmed</Task>
+      <Task extra={<Chip>14 orders</Chip>}>Dropship tracking added</Task>
+      <Task done={false} extra={<Chip tone="warn">Today</Chip>}>Chase PO-121 delivery date</Task>
+      <span className="cv-progress"><i style={vars({ "--w": "66%" })} /></span>
+    </Win>
+  ),
+
+  reviews: () => (
+    <div className="cv-chat">
+      <div className="cv-msg">
+        <span className="cv-avatar">MR</span>
+        <p>
+          <span className="cv-stars">★★★★☆</span>
+          <br />
+          Love the fabric. Shipping took a while.
+        </p>
+      </div>
+      <div className="cv-msg cv-msg--me">
+        <p>Thank you, Maya! We have switched to a faster courier for your area.</p>
+        <span className="cv-avatar cv-avatar--brand">EP</span>
+      </div>
+      <div className="cv-row cv-chat__meta">
+        <Chip tone="ok"><Check /> All reviews answered</Chip>
+      </div>
+    </div>
+  ),
+
+  inbox: () => (
+    <Win badge={<Chip tone="accent">3 new</Chip>} title="Social inbox">
+      <FileRow icon={<IconBrandInstagram />} meta="Replied" name="Is the linen shirt back in stock?" tone="red" />
+      <FileRow icon={<IconBrandTiktok />} meta="Replied" name="Do you ship to Canada?" tone="ink" />
+      <FileRow icon={<IconBrandFacebook />} meta="To sales" name="Wholesale order for 50 pieces" tone="blue" />
+    </Win>
+  ),
+
+  ledger: () => (
+    <Win badge={<Chip tone="ok"><Check /> Ready for accountant</Chip>} title="September records">
+      <FileRow icon={<Receipt />} meta="48 logged" name="Receipts" tone="accent" />
+      <FileRow icon={<FileText />} meta="12 sent" name="Invoices" tone="blue" />
+      <FileRow icon={<Package />} meta="Matched" name="Marketplace payouts" tone="violet" />
     </Win>
   ),
 };

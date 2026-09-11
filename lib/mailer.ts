@@ -9,12 +9,32 @@ import nodemailer from "nodemailer";
 export type BookingInquiry = {
   name: string;
   email: string;
+  phone: string;
   company: string;
+  website: string;
   service: string;
   duration: string;
-  budget: string;
+  platforms: string;
+  orders: string;
+  start: string;
   message: string;
 };
+
+// Label/value pairs shared by the text and HTML versions of the email.
+function detailRows(data: BookingInquiry): Array<[string, string]> {
+  return [
+    ["Name", data.name],
+    ["Email", data.email],
+    ["WhatsApp / phone", data.phone || "Not provided"],
+    ["Company", data.company || "Not provided"],
+    ["Store website", data.website || "Not provided"],
+    ["Plan", data.service || "Not sure yet"],
+    ["Billing period", data.duration || "Not provided"],
+    ["Platforms", data.platforms || "Not provided"],
+    ["Orders per month", data.orders || "Not provided"],
+    ["Start", data.start || "Not provided"],
+  ];
+}
 
 // Cached across requests (and hot reloads) so we don't reconnect/re-auth to
 // the SMTP server on every single form submission.
@@ -69,12 +89,7 @@ function buildTextBody(data: BookingInquiry) {
   return [
     "New project inquiry from the Ecom ProDesk website",
     "",
-    `Name:              ${data.name}`,
-    `Email:             ${data.email}`,
-    `Company:           ${data.company || "Not provided"}`,
-    `Primary need:      ${data.service}`,
-    `Project duration:  ${data.duration}`,
-    `Budget / timeline: ${data.budget || "Not provided"}`,
+    ...detailRows(data).map(([label, value]) => `${`${label}:`.padEnd(19)}${value}`),
     "",
     "Project note:",
     data.message,
@@ -85,16 +100,7 @@ function buildTextBody(data: BookingInquiry) {
 // laid out as a two-column table (label/value) plus a highlighted block for
 // the free-text project note, so it's organized and easy to read in an inbox.
 function buildHtmlBody(data: BookingInquiry) {
-  const rows: Array<[string, string]> = [
-    ["Name", data.name],
-    ["Email", data.email],
-    ["Company", data.company || "Not provided"],
-    ["Primary need", data.service],
-    ["Project duration", data.duration],
-    ["Budget / timeline", data.budget || "Not provided"],
-  ];
-
-  const rowsHtml = rows
+  const rowsHtml = detailRows(data)
     .map(
       ([label, value]) => `
         <tr>

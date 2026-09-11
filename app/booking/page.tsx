@@ -1,14 +1,21 @@
+import { IconBrandWhatsapp } from "@tabler/icons-react";
+import { ClipboardList, MailCheck, MessageSquareText, Star } from "lucide-react";
 import type { Metadata } from "next";
+import Link from "next/link";
+import type { CSSProperties } from "react";
 
+import "@/components/services/service-pages.css";
+import "@/components/home/home.css";
+import "@/components/pricing/pricing.css";
+import "@/components/sections/booking.css";
 import ScrollCinematics from "@/components/motion/ScrollCinematics";
-import BookingForm from "@/components/sections/BookingForm";
-import BookingSection from "@/components/sections/BookingSection";
-import Button from "@/components/ui/Button";
+import BookingForm, { type BookingPrefill } from "@/components/sections/BookingForm";
+import ServiceMotion from "@/components/services/ServiceMotion";
 import { brand } from "@/lib/brand";
 
 const pageTitle = "Book a Call | EcomPros";
 const pageDescription =
-  "Share your project scope, preferred plan, timeline, and a quick note — we'll reply by email or WhatsApp.";
+  "Tell us about your store, pick a plan if you know it, and we will reply by email or WhatsApp to set up a short call.";
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -26,85 +33,154 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BookingPage() {
-  return (
-    <div className="page-shell">
-      <ScrollCinematics />
+type BookingPageProps = {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+};
 
-      <section className="section section--tight booking-scale" aria-labelledby="scale-title">
-        <div className="section__inner">
-          <div className="section__head">
-            <div>
-              <p className="section__label" data-cinematic="rise">
-                Scale
-              </p>
-              <h1
-                className="section__title"
-                data-cinematic="clip"
-                data-cinematic-delay="1"
-                id="scale-title"
-              >
-                Ready for Your Biggest Days.
-              </h1>
+const nextSteps = [
+  {
+    icon: MessageSquareText,
+    title: "We read your note",
+    body: "We look at your store, the platforms you sell on, and the plan you picked.",
+  },
+  {
+    icon: MailCheck,
+    title: "We reply to set up a call",
+    body: "By email, or on WhatsApp if you leave your number, at a time that suits you.",
+  },
+  {
+    icon: ClipboardList,
+    title: "You get a clear plan",
+    body: "Tasks, team, and price agreed with you before any work starts.",
+  },
+];
+
+const bookingFaqs = [
+  {
+    question: "Do I have to choose a plan now?",
+    answer: "No. Pick “Not sure yet” and we will recommend a plan once we understand your store and order volume.",
+  },
+  {
+    question: "What should I write in my note?",
+    answer:
+      "The platforms you sell on, roughly how many orders you handle, and the tasks you want off your plate. A few lines is plenty.",
+  },
+  {
+    question: "How will you get back to me?",
+    answer: "By email, or on WhatsApp if you add your number.",
+  },
+  {
+    question: "Can I just message you instead?",
+    answer: "Yes. Tap “Chat on WhatsApp” and tell us what you need. We will take it from there.",
+  },
+];
+
+function firstValue(value: string | string[] | undefined) {
+  return Array.isArray(value) ? value[0] : value;
+}
+
+export default async function BookingPage({ searchParams }: BookingPageProps) {
+  const params = await searchParams;
+  const prefill: BookingPrefill = {
+    period: firstValue(params.period),
+    plan: firstValue(params.plan),
+    tasks: firstValue(params.tasks),
+  };
+
+  return (
+    <div className="page-shell sv-page bk-page">
+      <ScrollCinematics />
+      <ServiceMotion />
+
+      <section aria-labelledby="booking-title" className="sv-hero bk-hero" id="booking">
+        <div className="sv-container bk-layout">
+          <div className="bk-intro">
+            <p className="sv-eyebrow sv-hero__item">
+              <span className="sv-eyebrow__dot" />
+              Book a call
+            </p>
+            <h1 className="sv-hero__title bk-title sv-hero__item" id="booking-title" style={{ "--i": 1 } as CSSProperties}>
+              Tell us about your store. <span className="sv-accent">We will plan the rest.</span>
+            </h1>
+            <p className="sv-hero__lead sv-hero__item" style={{ "--i": 2 } as CSSProperties}>
+              It takes about two minutes. Share what you sell and what you need, and we will come back with a clear
+              plan and price.
+            </p>
+          </div>
+
+          <div className="bk-card sv-hero__item" style={{ "--i": 2 } as CSSProperties}>
+            <BookingForm prefill={prefill} />
+          </div>
+
+          <div className="bk-aside">
+            <div className="bk-next sv-hero__item" style={{ "--i": 3 } as CSSProperties}>
+              <p className="bk-next__title">What happens next</p>
+              <ol>
+                {nextSteps.map((step, index) => {
+                  const Icon = step.icon;
+
+                  return (
+                    <li key={step.title}>
+                      <span className="bk-next__icon">
+                        <Icon aria-hidden="true" />
+                        <small>{index + 1}</small>
+                      </span>
+                      <span>
+                        <strong>{step.title}</strong>
+                        <span>{step.body}</span>
+                      </span>
+                    </li>
+                  );
+                })}
+              </ol>
             </div>
-            <p className="section__copy" data-cinematic="rise" data-cinematic-delay="2">
-              From everyday operations to major campaigns, holidays and sudden demand
-              spikes, EcomPros provides the team and capacity to keep your operation
-              moving.
-            </p>
-            <p className="section__copy" data-cinematic="rise" data-cinematic-delay="3">
-              Your business grows. Your operation scales with it.
-            </p>
+
+            <div className="bk-trust sv-hero__item" style={{ "--i": 4 } as CSSProperties}>
+              <div className="bk-trust__rating">
+                <span aria-hidden="true" className="sv-stars">
+                  {Array.from({ length: 5 }, (_, index) => (
+                    <Star key={index} />
+                  ))}
+                </span>
+                <span>
+                  <strong>5.0</strong> client rating · <strong>1,000+</strong> ecommerce clients
+                </span>
+              </div>
+              <div className="bk-trust__alt">
+                <span>Prefer to chat?</span>
+                <Link className="sv-whatsapp" href="/whatsapp" prefetch={false} rel="noopener noreferrer" target="_blank">
+                  <IconBrandWhatsapp aria-hidden="true" />
+                  Chat on WhatsApp
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <BookingSection>
-        <div className="section__inner section__inner--wide">
-          <p className="section__label booking-section__label">Book a call</p>
-
-          <div className="booking-layout">
-          <div data-cinematic="rise">
-            <h2 className="section__title" id="booking-title">
-              Bring the surface that needs to ship.
+      <section aria-labelledby="booking-faq-title" className="sv-section sv-section--tint">
+        <div className="sv-container sv-faq">
+          <div className="sv-faq__intro" data-reveal>
+            <p className="sv-kicker">Before you book</p>
+            <h2 className="sv-title" id="booking-faq-title">
+              Quick answers.
             </h2>
-            <p className="section__copy">
-              Share the rough shape, your preferred plan, the timeline you&apos;re
-              considering, and a quick note about the project. We&apos;ll reply by email
-              or WhatsApp.
+            <p className="sv-lead">
+              Want to compare plans first? <Link className="bk-inline-link" href="/pricing">See pricing</Link> or{" "}
+              <Link className="bk-inline-link" href="/services">explore our services</Link>.
             </p>
-
-            <Button
-              className="booking-whatsapp"
-              href="/whatsapp"
-              prefetch={false}
-              rel="noopener noreferrer"
-              size="md"
-              target="_blank"
-              variant="secondary"
-            >
-              <svg
-                aria-hidden="true"
-                className="booking-whatsapp__icon"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"
-                  fill="currentColor"
-                  stroke="none"
-                />
-              </svg>
-              Chat on WhatsApp
-            </Button>
           </div>
 
-          <div className="booking-panel" data-cinematic="rise" data-cinematic-delay="2">
-            <BookingForm />
-          </div>
+          <div className="sv-accordion">
+            {bookingFaqs.map((faq, index) => (
+              <details data-reveal key={faq.question} open={index === 0}>
+                <summary>{faq.question}</summary>
+                <p>{faq.answer}</p>
+              </details>
+            ))}
           </div>
         </div>
-      </BookingSection>
+      </section>
     </div>
   );
 }

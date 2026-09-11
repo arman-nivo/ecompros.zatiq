@@ -1,33 +1,4 @@
 import {
-  IconBrandAdobeAfterEffects,
-  IconBrandAdobeIllustrator,
-  IconBrandAdobePremiere,
-  IconBrandAmazon,
-  IconBrandAuth0,
-  IconBrandChrome,
-  IconBrandCloudflare,
-  IconBrandDropbox,
-  IconBrandEtsy,
-  IconBrandFacebook,
-  IconBrandFigma,
-  IconBrandGithub,
-  IconBrandGmail,
-  IconBrandGoogle,
-  IconBrandGoogleAnalytics,
-  IconBrandGoogleDrive,
-  IconBrandGoogleMaps,
-  IconBrandInstagram,
-  IconBrandLinkedin,
-  IconBrandMessenger,
-  IconBrandMeta,
-  IconBrandNotion,
-  IconBrandSpotify,
-  IconBrandTiktok,
-  IconBrandWalmart,
-  IconBrandWhatsapp,
-  IconBrandYoutube,
-} from "@tabler/icons-react";
-import {
   Boxes,
   Bug,
   CalendarRange,
@@ -57,9 +28,7 @@ import {
   Repeat,
   ScrollText,
   Search,
-  Sheet,
   ShieldCheck,
-  ShoppingBag,
   Siren,
   SlidersHorizontal,
   Smartphone,
@@ -71,15 +40,13 @@ import {
   UsersRound,
   type LucideIcon,
 } from "lucide-react";
-import type { ComponentType } from "react";
 
 import CapabilityVisual from "@/components/services/CapabilityVisual";
+import { ToolChip } from "@/components/services/tools";
 import "@/components/services/capabilities.css";
 import type { ServiceCapability, ServiceCapabilityGroup } from "@/lib/services";
 
-type IconComponent = ComponentType<{ className?: string; "aria-hidden"?: boolean }>;
-
-const capabilityIcons: Record<string, LucideIcon> = {
+export const capabilityIcons: Record<string, LucideIcon> = {
   boxes: Boxes,
   bug: Bug,
   calendar: CalendarRange,
@@ -120,55 +87,6 @@ const capabilityIcons: Record<string, LucideIcon> = {
   "users-round": UsersRound,
 };
 
-const toolRegistry: Record<string, { brand: string; icon: IconComponent; label: string }> = {
-  "after-effects": { brand: "adobe-video", icon: IconBrandAdobeAfterEffects, label: "After Effects" },
-  amazon: { brand: "amazon", icon: IconBrandAmazon, label: "Amazon" },
-  auth0: { brand: "auth0", icon: IconBrandAuth0, label: "Auth0" },
-  chrome: { brand: "google", icon: IconBrandChrome, label: "Lighthouse" },
-  cloudflare: { brand: "cloudflare", icon: IconBrandCloudflare, label: "Cloudflare" },
-  drive: { brand: "drive", icon: IconBrandGoogleDrive, label: "Google Drive" },
-  dropbox: { brand: "dropbox", icon: IconBrandDropbox, label: "Dropbox" },
-  etsy: { brand: "etsy", icon: IconBrandEtsy, label: "Etsy" },
-  facebook: { brand: "facebook", icon: IconBrandFacebook, label: "Facebook" },
-  figma: { brand: "figma", icon: IconBrandFigma, label: "Figma" },
-  github: { brand: "ink", icon: IconBrandGithub, label: "GitHub" },
-  gmail: { brand: "gmail", icon: IconBrandGmail, label: "Gmail" },
-  google: { brand: "google", icon: IconBrandGoogle, label: "Google" },
-  "google-analytics": { brand: "analytics", icon: IconBrandGoogleAnalytics, label: "Google Analytics" },
-  "google-maps": { brand: "maps", icon: IconBrandGoogleMaps, label: "Google Business" },
-  illustrator: { brand: "illustrator", icon: IconBrandAdobeIllustrator, label: "Illustrator" },
-  instagram: { brand: "instagram", icon: IconBrandInstagram, label: "Instagram" },
-  linkedin: { brand: "linkedin", icon: IconBrandLinkedin, label: "LinkedIn" },
-  messenger: { brand: "messenger", icon: IconBrandMessenger, label: "Messenger" },
-  meta: { brand: "meta", icon: IconBrandMeta, label: "Meta Ads" },
-  notion: { brand: "ink", icon: IconBrandNotion, label: "Notion" },
-  premiere: { brand: "adobe-video", icon: IconBrandAdobePremiere, label: "Premiere Pro" },
-  sheets: { brand: "sheets", icon: Sheet, label: "Google Sheets" },
-  shopify: { brand: "shopify", icon: ShoppingBag, label: "Shopify" },
-  spotify: { brand: "spotify", icon: IconBrandSpotify, label: "Spotify" },
-  tiktok: { brand: "ink", icon: IconBrandTiktok, label: "TikTok" },
-  walmart: { brand: "walmart", icon: IconBrandWalmart, label: "Walmart" },
-  whatsapp: { brand: "whatsapp", icon: IconBrandWhatsapp, label: "WhatsApp" },
-  youtube: { brand: "youtube", icon: IconBrandYoutube, label: "YouTube" },
-};
-
-function ToolChip({ tool }: { tool: string }) {
-  const entry = toolRegistry[tool];
-
-  if (!entry) {
-    return null;
-  }
-
-  const Icon = entry.icon;
-
-  return (
-    <li className="capability-tool">
-      <Icon aria-hidden className={`capability-tool__icon cv-brand--${entry.brand}`} />
-      {entry.label}
-    </li>
-  );
-}
-
 function groupCapabilities(
   capabilities: readonly ServiceCapability[],
   groups: readonly ServiceCapabilityGroup[] | undefined,
@@ -205,15 +123,7 @@ export default function ServiceCapabilities({
   const hasGroups = grouped.length > 1 || Boolean(grouped[0]?.title);
 
   return (
-    <section className="service-detail-panel capabilities" aria-labelledby="service-capabilities-title">
-      <div className="capabilities__intro">
-        <h3 id="service-capabilities-title">Capabilities</h3>
-        <p>
-          {capabilities.length} ways we help, organised into {grouped.length}{" "}
-          {grouped.length === 1 ? "area" : "areas"}. Each card shows what the work looks like
-          and the tools we use.
-        </p>
-      </div>
+    <div className="capabilities">
 
       {hasGroups ? (
         <nav className="capabilities__jump" aria-label={`${serviceTitle} capability areas`}>
@@ -252,7 +162,7 @@ export default function ServiceCapabilities({
             <header className="capability-area__head" data-cinematic="rise">
               <span className="capability-area__index">{String(groupIndex + 1).padStart(2, "0")}</span>
               <div>
-                <h4>{group.title}</h4>
+                <h3>{group.title}</h3>
                 {group.summary ? <p>{group.summary}</p> : null}
               </div>
             </header>
@@ -278,7 +188,7 @@ export default function ServiceCapabilities({
                       </span>
                       <span className="capability-card__number">{String(number).padStart(2, "0")}</span>
                     </div>
-                    <h5>{capability.title}</h5>
+                    <h4>{capability.title}</h4>
                     <p>{capability.body}</p>
 
                     {capability.highlights?.length ? (
@@ -309,6 +219,6 @@ export default function ServiceCapabilities({
           </div>
         </div>
       ))}
-    </section>
+    </div>
   );
 }
